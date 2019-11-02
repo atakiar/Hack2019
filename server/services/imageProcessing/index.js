@@ -1,11 +1,11 @@
 // External
-const { createWorker } = require('tesseract.js');
+const Tesseract = require('tesseract.js');
 
 // Internal
-const cleanup = require('./cleanup');
+const toBase64 = require('./toBase64');
 
 // Setup
-let worker = createWorker();
+let worker = Tesseract.createWorker();
 
 const initialize = async () => {
   await worker.load();
@@ -15,13 +15,14 @@ const initialize = async () => {
 
 // Run
 const processImage = async encodedImage => {
-  let { text, confidence } = await worker.recognize(encodedImage);
-
-  text = cleanup(text);
+  let {
+    data: { text, confidence },
+  } = await worker.recognize(encodedImage);
   return { text, confidence };
 };
 
 module.exports = {
   initialize,
   processImage,
+  toBase64,
 };
