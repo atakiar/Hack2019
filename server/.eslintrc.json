@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "prefer-destructuring": "off",
+    "arrow-parens": ["warn", "as-needed"],
+    "comma-dangle": [
+      "warn",
+      {
+        "arrays": "never",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "never"
+      }
+    ],
+    "max-len": "off",
+    "no-underscore-dangle": "off",
+    "prefer-const": "off",
+    "no-bitwise": "off",
+    "import/newline-after-import": "off"
+  },
+  "extends": "airbnb-base",
+  "plugins": ["node", "promise", "import"]
+}
