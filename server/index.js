@@ -4,7 +4,7 @@ const http = require("http");
 const app = express();
 
 // External
-const fs = require("fs");
+const fs = require('fs');
 
 // Internal
 const config = require("./util/config");
