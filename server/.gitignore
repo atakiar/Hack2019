@@ -19,3 +19,7 @@ node_modules/
 
 # config
 config/
+
+# Services
+eng.traineddata
+/imageProcessing/eng.traineddata
