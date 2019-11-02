@@ -19,7 +19,7 @@ pagesCollection.createIndex({ pageID: 1 });
  * @return {Object} result.token
  * @return {string} result.message
  */
-module.exports.add = async () => {
+const add = async () => {
   let response = { success: false };
 
   try {
@@ -28,7 +28,6 @@ module.exports.add = async () => {
     await pagesCollection.insert({
       pageID,
       text: '',
-      confidence: 0,
     });
 
     const token = jwt.createToken(pageID);
@@ -50,7 +49,7 @@ module.exports.add = async () => {
  * @return {Object} result.text
  * @return {string} result.message
  */
-module.exports.get = async pageID => {
+const get = async pageID => {
   let response = { success: false };
 
   try {
@@ -65,3 +64,5 @@ module.exports.get = async pageID => {
     throw new Error(response);
   }
 };
+
+module.exports = { add, get };

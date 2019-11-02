@@ -7,6 +7,7 @@ const messages = require('../util/messages');
 // Setup
 const db = monk('localhost:27017/Hack2019');
 const imagesCollection = db.get('Images');
+imagesCollection.createIndex({ pageID: 1 });
 
 /** add
  * @description Adds a new image
@@ -15,7 +16,7 @@ const imagesCollection = db.get('Images');
  * @return {boolean} result.success
  * @return {string} result.message
  */
-module.exports.add = async (pageID, text, confidence) => {
+const add = async (pageID, text, confidence) => {
   let response = { success: false };
 
   try {
@@ -32,3 +33,5 @@ module.exports.add = async (pageID, text, confidence) => {
     throw new Error(response);
   }
 };
+
+module.exports = { add };

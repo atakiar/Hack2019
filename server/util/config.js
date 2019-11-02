@@ -4,7 +4,8 @@ const commandLineArguments = process.argv.filter(
 
 const isProd = process.env.NODE_ENV === 'prod';
 
-const secret = commandLineArguments[0] || process.env.SECRET;
+// const secret = commandLineArguments[0] || process.env.SECRET;
+const secret = 'test'; // TODO: Fix
 
 module.exports = {
   isProd,
