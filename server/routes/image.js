@@ -21,9 +21,9 @@ router.post('/add', async (req, res) => {
     const pageID = req.pageID;
     const image = req.body.image;
 
-    const { text, confidence } = imageProcessing.run(image);
+    const data = imageProcessing.run(image);
 
-    const result = await imagesDB.add(pageID, text, confidence);
+    const result = await imagesDB.add(pageID, data.text);
 
     res
       .status(200)

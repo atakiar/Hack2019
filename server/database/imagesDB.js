@@ -16,14 +16,13 @@ imagesCollection.createIndex({ pageID: 1 });
  * @return {boolean} result.success
  * @return {string} result.message
  */
-const add = async (pageID, text, confidence) => {
+const add = async (pageID, text) => {
   let response = { success: false };
 
   try {
     await imagesCollection.insert({
       pageID,
       text,
-      confidence,
     });
 
     response.success = true;
