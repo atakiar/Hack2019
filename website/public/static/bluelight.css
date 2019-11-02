@@ -18,7 +18,7 @@
 }
 
 .button:hover,
-.btn:focus {
+.button:focus {
     background-color: #EEA337;
 }
 
@@ -71,8 +71,7 @@ label {
 
 /* active state */
 
-input:focus~label,
-input:valid~label {
+input:focus~label {
     top: -20px;
     font-size: 14px;
     color: #5E1E00;

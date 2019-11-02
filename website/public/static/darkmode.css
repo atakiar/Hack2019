@@ -1,94 +1,115 @@
-* { box-sizing:border-box; }
+* {
+    box-sizing: border-box;
+}
+
 
 /* basic stylings ------------------------------------------ */
-.container 		{ 
-  width:55vw; 
-  margin:30px auto 0; 
-  display:block; 
-  padding:10px 50px 50px;
+
+.container {
+    width: 55vw;
+    margin: 30px auto 0;
+    display: block;
+    padding: 10px 50px 50px;
 }
 
-.button{
-  background-color: gray;
-  color: whitesmoke;
+.button {
+    background-color: gray;
+    color: whitesmoke;
 }
 
-.button:hover, .btn:focus {
-  background-color: darkslategray;
+.button:hover,
+.button:focus {
+    background-color: darkslategray;
 }
 
-
-h1		 { 
-  text-align:center; 
-  margin-bottom: 10vh; 
-  font-weight: bold;
-  font-size: 10vh;
+h1 {
+    text-align: center;
+    margin-bottom: 10vh;
+    font-weight: bold;
+    font-size: 10vh;
 }
+
 
 /* form starting stylings ------------------------------- */
-.group 			  { 
-  position:relative; 
-  margin-bottom:45px; 
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
 }
-input 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:50vw;
-  border:none;
-  color: whitesmoke;
-  background: black;
-  border-bottom:1px solid whitesmoke;
+
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 50vw;
+    border: none;
+    color: whitesmoke;
+    background: black;
+    border-bottom: 1px solid whitesmoke;
 }
-input:focus 		{ outline:none; }
+
+input:focus {
+    outline: none;
+}
+
 
 /* LABEL ======================================= */
-label 				 {
-  color:whitesmoke; 
-  font-size:18px;
-  font-weight:normal;
-  position:absolute;
-  pointer-events:none;
-  left:1vw;
-  top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
+
+label {
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 1vw;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
 }
 
-/* active state */
-input:focus ~ label, input:valid ~ label 		{
-  top:-20px;
-  font-size:14px;
-  color:whitesmoke;
-}
 
 /* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
+
+input:focus~label {
+    top: -20px;
+    font-size: 14px;
+    color: whitesmoke;
 }
+
+
+/* active state */
+
+input:focus~.bar:before,
+input:focus~.bar:after {
+    width: 50%;
+}
+
 
 /* HIGHLIGHTER ================================== */
+
 .highlight {
-  position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
+
 /* active state */
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
+
+input:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
 }
 
 body {
-  background: black;
-  color: whitesmoke;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  font-weight: 300;
+    background: black;
+    color: whitesmoke;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
 }

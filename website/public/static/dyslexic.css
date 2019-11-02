@@ -18,13 +18,13 @@
 }
 
 .button {
-    background-color: #046B99;
-    color: #B3EFFF;
+    background-color: darkslategray;
+    color: yellow;
     font-family: OpenDyslexic;
 }
 
-.btn:focus {
-    background-color: #00CFFF;
+.button:focus {
+    background-color: darkgray;
 }
 
 h1 {
@@ -48,9 +48,9 @@ input {
     display: block;
     width: 50vw;
     border: none;
-    color: #1C304A;
-    background: #B3EFFF;
-    border-bottom: 1px solid #1C304A;
+    color: yellow;
+    background: black;
+    border-bottom: 1px solid yellow;
 }
 
 input:focus {
@@ -61,7 +61,7 @@ input:focus {
 /* LABEL ======================================= */
 
 label {
-    color: #1C304A;
+    color: yellow;
     font-size: 18px;
     font-weight: normal;
     position: absolute;
@@ -80,14 +80,13 @@ input:focus~label,
 input:valid~label {
     top: -20px;
     font-size: 14px;
-    color: #1C304A;
+    color: yellow;
 }
 
 
 /* active state */
 
-input:focus~.bar:before,
-input:focus~.bar:after {
+input:focus~.bar:before {
     width: 50%;
 }
 
@@ -114,8 +113,8 @@ input:focus~.highlight {
 }
 
 body {
-    background: #B3EFFF;
-    color: #1C304A;
+    background: black;
+    color: yellow;
     font-family: OpenDyslexic, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
 }
