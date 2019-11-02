@@ -14,7 +14,7 @@ const middleware = require("./util/middleware");
 app.use(middleware);
 
 // Router
-const appRouter = require("./routes/app/");
+const appRouter = require("./routes/");
 app.use("/", appRouter);
 
 // Start server
