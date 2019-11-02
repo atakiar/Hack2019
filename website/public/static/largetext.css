@@ -64,7 +64,7 @@ label {
     position: absolute;
     pointer-events: none;
     left: 1vw;
-    top: 4vh;
+    top: 1vh;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -74,7 +74,7 @@ label {
 /* active state */
 
 input:focus~label {
-    top: -4vh;
+    top: -4.5vh;
     font-size: 4vh;
     color: #1C304A;
 }
