@@ -3,7 +3,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 
-// Internal
+// Services
 const imageProcessing = require('./services/imageProcessing');
 
 // Middleware
@@ -20,5 +20,5 @@ httpServer.listen(3000, () => {
   console.log('Server running at 3000');
 });
 
-// Initialize services
+// Services
 imageProcessing.initialize();

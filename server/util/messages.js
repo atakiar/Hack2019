@@ -2,4 +2,4 @@ const messages = {
   error: 'Something went wrong!',
 };
 
-export default messages;
+module.exports = messages;

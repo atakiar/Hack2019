@@ -5,4 +5,4 @@ const cleanup = text => {
   return result;
 };
 
-export default cleanup;
+module.exports = cleanup;
