@@ -2,20 +2,31 @@ doctype html
 html
   head
     title #{title}
-    link(rel='stylesheet', href='/css/style.css')
+    link(id='pagestyle', rel='stylesheet', href='/static/style.css')
+    link(rel='stylesheet', href='/static/buttons.css')
+    //script(src='https://platform-beta.oswaldlabs.com/v1/agastya/load/blind-boi-810d9.js' async='' defer='') 
     meta(name="viewport" content="width=device-width, initial-scale=1")
+    script(src='/javascripts/accessibility.js')
+      
   body
-    main
-      div.container
-        header
-          h1 Blind Boi
-        
-        form(action='/get-text', method="get")
-          .group
-            input(type='text' required='')
-            span.highlight
-            span.bar
-            label TEXT ID
-        div
-          | #{gotText}
-      block content
+    div.container
+      header
+        h1 Blind Bois
+      
+      form(action='/get-text', method="get")
+        .group
+          input(type='text')
+          span.highlight
+          span.bar
+          label TEXT ID
+      div
+        | #{gotText}
+    
+    div.bar
+      button#normal.button Normal
+      button#darkmode.button Dark Mode
+      button#bluelight.button Blue Light Filter
+      button#largetext.button Large Text
+      button#dyslexic.button Dyslexic
+
+    block content

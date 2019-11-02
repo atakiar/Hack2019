@@ -2,11 +2,21 @@
 
 /* basic stylings ------------------------------------------ */
 .container 		{ 
-  width:60vw; 
+  width:55vw; 
   margin:30px auto 0; 
   display:block; 
   padding:10px 50px 50px;
 }
+
+.button{
+  background-color: gray;
+  color: whitesmoke;
+}
+
+.button:hover, .btn:focus {
+  background-color: darkslategray;
+}
+
 
 h1		 { 
   text-align:center; 

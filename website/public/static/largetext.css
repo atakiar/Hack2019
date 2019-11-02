@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/* basic stylings ------------------------------------------ */
+
+.container {
+    width: 70vw;
+    margin: 30px auto 0;
+    display: block;
+    padding: 10px 50px 50px;
+}
+
+.button {
+    background-color: #046B99;
+    color: #B3EFFF;
+    font-size: 120%;
+}
+
+.button:hover,
+.btn:focus {
+    background-color: #00CFFF;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10vh;
+    font-weight: bold;
+    font-size: 14vh;
+}
+
+
+/* form starting stylings ------------------------------- */
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+input {
+    font-size: 7vh;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    height: 7vh;
+    width: 65vw;
+    border: none;
+    color: #1C304A;
+    background: #B3EFFF;
+    border-bottom: 1px solid #1C304A;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+/* LABEL ======================================= */
+
+label {
+    color: #1C304A;
+    font-size: 4vh;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 1vw;
+    top: 4vh;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+
+/* active state */
+
+input:focus~label,
+input:valid~label {
+    top: -4vh;
+    font-size: 4vh;
+    color: #1C304A;
+}
+
+
+/* active state */
+
+input:focus~.bar:before,
+input:focus~.bar:after {
+    width: 50%;
+}
+
+
+/* active state */
+
+input:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+body {
+    background: #B3EFFF;
+    color: #1C304A;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 900;
+}

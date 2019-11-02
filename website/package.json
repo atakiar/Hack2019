@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,22 +18,16 @@
   },
   "homepage": "https://github.com/atakiar/Hack2019#readme",
   "devDependencies": {
-    "css-loader": "^3.2.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "extract-loader": "^3.1.0",
-    "file-loader": "^4.2.0",
-    "node-sass": "^4.13.0",
-    "nodemon": "^1.19.0",
-    "sass-loader": "^8.0.0"
+    "nodemon": "^1.19.0"
   },
   "dependencies": {
     "express": "^4.16.3",
-    "material-components-web": "^3.2.0",
     "pug": "^2.0.3"
   }
 }
