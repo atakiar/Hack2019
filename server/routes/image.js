@@ -5,6 +5,7 @@ const router = express.Router();
 // Internal
 const imagesDB = require('../database/imagesDB');
 const imageProcessing = require('../services/imageProcessing');
+const textProcessing = require('../services/textProcessing');
 
 /** POST to [BaseAddress]/image/add
  * @description Adds a new image
@@ -21,9 +22,10 @@ router.post('/add', async (req, res) => {
     const pageID = req.pageID;
     const image = req.body.image;
 
-    const data = imageProcessing.run(image);
+    let { text: corpus } = imageProcessing.run(image);
+    corpus = textProcessing.spellCorrection(corpus);
 
-    const result = await imagesDB.add(pageID, data.text);
+    const result = await imagesDB.add(pageID, corpus);
 
     res
       .status(200)
