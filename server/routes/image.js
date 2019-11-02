@@ -2,24 +2,28 @@
 const express = require('express');
 const router = express.Router();
 
-// Database
-const imagesDB = require('');
+// Internal
+const imagesDB = require('../database/imagesDB');
+const imageProcessing = require('../services/imageProcessing');
 
-/** POST to [BaseAddress]/image/
- * @description Takes image to be processed
+/** POST to [BaseAddress]/image/add
+ * @description Adds a new image
  *
- * @param {string} image image to be processed and analyzed
+ * @param {string} image image
  *
- * @return {object}
- *    success: true, text: {text in image}
- *    success: false, message: {error message}
+ * @return {Object} result
+ * @return {boolean} result.success
+ * @return {string} result.text
+ * @return {string} result.message
  */
-router.get('/', async (req, res) => {
+router.post('/add', async (req, res) => {
   try {
-    const pageID = req.body.pageID;
+    const pageID = req.pageID;
     const image = req.body.image;
 
-    const result = await imagesDB.add(pageID, image);
+    const { text, confidence } = imageProcessing.run(image);
+
+    const result = await imagesDB.add(pageID, text, confidence);
 
     res
       .status(200)

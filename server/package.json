@@ -31,8 +31,10 @@
     "express": "^4.17.1",
     "helmet": "^3.21.2",
     "hpp": "^0.2.2",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.3",
     "monk": "^7.1.1",
+    "randomstring": "^1.1.5",
     "tesseract.js": "^2.0.0-beta.2"
   }
 }
