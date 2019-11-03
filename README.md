@@ -12,7 +12,7 @@ HackOHI/O 2019
 - [ ] Ngram spell checking
 
 ### Website
-- [ ] Styling on text to speech button
+- [X] Styling on text to speech button
 - [ ] Styling for text
 - [x] Text to speech
 
