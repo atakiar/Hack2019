@@ -23,8 +23,8 @@ router.post('/add', async (req, res) => {
     const pageID = req.pageID;
     const image = req.body.image;
 
-    let { text } = imageProcessing.run(image);
-    text = textProcessing.spellCorrection(text);
+    let { text } = await imageProcessing.processImage(image);
+    text = await textProcessing.spellCorrection(text);
 
     const result = await imagesDB.add(pageID, text);
 
