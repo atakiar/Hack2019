@@ -14,14 +14,8 @@ function bark() {
 
         // Get the first `en` language voice in the list
         var voice = synthesis.getVoices().filter(function(voice) {
-            return voice.lang === 'en';
+            return voice.name === 'Moira';
         })[0];
-
-        synthesis.getVoices().forEach((x) => {
-
-            console.log(x.name);
-            console.log(x.lang);
-        });
 
         // Create an utterance object
         var utterance = new SpeechSynthesisUtterance(text);

@@ -14,7 +14,7 @@
     width: 55vw;
     margin: 30px auto 0;
     display: block;
-    padding: 10px 50px 50px;
+    padding: 0;
 }
 
 
@@ -127,7 +127,7 @@ body.largetext h1 {
 
 .group {
     position: relative;
-    margin-bottom: 45px;
+    margin-bottom: 10px;
 }
 
 
@@ -199,8 +199,6 @@ label {
     left: 1vw;
     top: 10px;
     transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
 }
 
 input:focus~label {
@@ -225,7 +223,7 @@ input:invalid {
 .largetext label {
     font-size: 5vh;
     left: 1vw;
-    top: 1vh;
+    top: 3vh;
 }
 
 .largetext input:focus~label {
@@ -279,28 +277,6 @@ input:focus~.bar:after {
     width: 50%;
 }
 
-
-/* HIGHLIGHTER ================================== */
-
-.highlight {
-    position: absolute;
-    height: 60%;
-    width: 100px;
-    top: 25%;
-    left: 0;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-
-/* active state */
-
-input:focus~.highlight {
-    -webkit-animation: inputHighlighter 0.3s ease;
-    -moz-animation: inputHighlighter 0.3s ease;
-    animation: inputHighlighter 0.3s ease;
-}
-
 body {
     background: #B3EFFF;
     color: #1C304A;
@@ -326,8 +302,4 @@ body {
 body.bluelight {
     background: #FFE594;
     color: #5E1E00;
-}
-
-.content {
-    text-align: right;
 }
