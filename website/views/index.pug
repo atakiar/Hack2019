@@ -27,11 +27,13 @@ html
       button#largetext.button Large Text
       button#dyslexic.button Dyslexic
 
-    div.content
-        div
-          text#text
-            | #{gotText}
-        button#bark.bark
-          i.material-icons hearing
+    
+    div
+      text#text
+        | #{gotText}
+
+    div.speechbutton
+      button#bark.bark
+        i.material-icons hearing
 
     block content
