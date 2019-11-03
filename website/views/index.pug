@@ -11,7 +11,11 @@ html
   body#body.normal
     div.container
       header
-        h1 Blind Bois
+        div.header
+          div
+            h1 Lumen
+          div.logo-container
+            img(src='/images/icon.png').logo
 
       form(action='/get-text', method="get")
         .group
@@ -32,10 +36,11 @@ html
     
     div#data
       text#text
-        each x in gotText
-          p.wordwrap #{x}
-          b
-          b
+        if gotText
+          each x in gotText
+            p.wordwrap #{x}
+            b
+            b
 
     div.speechbutton
       button#bark.bark
