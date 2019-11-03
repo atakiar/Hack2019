@@ -4,14 +4,14 @@ import {
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
-import ActionButton from '../components/ActionButton';
+import ListenButton from '../components/ListenButton';
 import { sendImage } from '../services/api/api'
 import * as Speech from 'expo-speech';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 
 
-export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean }> {
+export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean, hasPlayed: boolean }> {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,14 +20,31 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       base64: '',
       imageLoaded: false,
       modalVisible: false,
-      isPlaying: false
+      isPlaying: false,
+      hasPlayed: false,
     };
+  }
+
+  toggleSpeaking = () => {
+
+    if (this.state.isPlaying) {
+      Speech.pause();
+    } else {
+      if (this.state.hasPlayed) {
+        Speech.resume();
+      } else {
+        Speech.speak(this.state.text);
+      }
+    }
+
+    this.setState((prevState) => ({
+      isPlaying: !prevState.isPlaying, hasPlayed: true
+    }))
   }
 
   sendImage = async () => {
     // make an http request
     const result = await sendImage(this.state.uri, this.state.base64);
-    console.log(result);
 
     const { text } = result;
 
@@ -65,11 +82,6 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       this.setState({ uri: image.uri, base64: image.base64, imageLoaded: true, modalVisible: true, });
     }
   }
-
-  sayText = () => {
-    Speech.speak(this.state.text)
-  }
-
 
   render() {
     const {
@@ -157,7 +169,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
             />
           </View>
         </Modal>
-        <ActionButton text="Listen" theme={theme} onPress={this.sayText} iconName="hearing" />
+        <ListenButton theme={theme} onPress={this.toggleSpeaking} isPlaying={this.state.isPlaying} />
       </SafeAreaView >
     );
   }

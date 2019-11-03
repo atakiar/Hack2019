@@ -9,7 +9,6 @@ const AppNavigator = createStackNavigator(
     Read: {
       screen: ReadScreen,
       navigationOptions: ({ navigation }) => {
-        console.log(navigation)
         return ({
           title: 'Read',
         })

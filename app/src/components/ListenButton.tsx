@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ActionButton from './ActionButton'
+import Theme from '../config/Theme';
 
-export default class ListenButton extends Component<{ isPlaying: boolean }, {}> {
+export default class ListenButton extends Component<{ isPlaying: boolean, theme: Theme, onPress: () => void }, { hasPlayed: boolean }> {
   constructor(props) {
     super(props)
 
@@ -9,10 +10,14 @@ export default class ListenButton extends Component<{ isPlaying: boolean }, {}> 
   }
 
   render() {
-    const { isPlaying } = this.props;
+    const { isPlaying, onPress, theme } = this.props;
+    const { hasPlayed } = this.state;
 
-    const iconName = isPlaying ? 'play-circle-outline' : 'pause'
+    const iconName = hasPlayed ? isPlaying ? 'pause-circle-outline' : 'play-circle-outline' : 'hearing';
 
-    return <ActionButton />
+    return <ActionButton text="Listen" iconName={iconName} theme={theme} onPress={() => {
+      this.setState({ hasPlayed: true })
+      onPress();
+    }} />
   }
 }

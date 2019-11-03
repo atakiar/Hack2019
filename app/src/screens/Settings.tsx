@@ -59,7 +59,6 @@ class Settings extends React.Component<{ screenProps: { theme: Theme } }, { acti
             keyExtractor={(item, index) => item + index}
 
             renderItem={({ item, section }) => {
-              console.log(section);
               return <RuleItem rule={item.rule} theme={theme} toggleRule={this.toggleRule} active={item.active} groupName={section.title.group.name} />
             }}
 
