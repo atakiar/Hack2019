@@ -25,7 +25,6 @@ export default class Main extends Component<{}, { fontLoaded: boolean }> {
 
   render() {
     const { fontLoaded } = this.state;
-    console.log(fontLoaded)
     return fontLoaded ? <Navigator screenProps={{ theme }} /> : null;
   }
 }

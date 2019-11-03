@@ -12,6 +12,7 @@
     "@types/react": "^16.9.11",
     "expo": "^35.0.0",
     "expo-cli": "^3.4.1",
+    "expo-image-picker": "^7.0.0",
     "expo-module-scripts": "^1.1.1",
     "expo-speech": "^7.0.0",
     "prop-types": "^15.7.2",

@@ -2,7 +2,7 @@
 
 ## To Do
 
-* Fonts
+* Fonts -> Doesn't do **bold** OpenDyslexic
 * Themes -> Styling
 * Camera
 * HTTP requests

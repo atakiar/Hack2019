@@ -2,7 +2,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ReadScreen from './screens/Read';
-import CameraScreen from './screens/Camera';
 import SettingsScreen from './screens/Settings';
 import Theme from './config/Theme';
 
@@ -15,9 +14,6 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         title: 'Read',
       },
-    },
-    Camera: {
-      screen: CameraScreen,
     },
     Settings: {
       screen: SettingsScreen,
