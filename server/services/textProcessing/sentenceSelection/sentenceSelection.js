@@ -1,7 +1,9 @@
 // External
 const spawn = require('child_process').spawn;
 
-// Spell correction
+
+// Sentence selection
+
 const sentenceSelection = async paragraphs => {
   let result = '';
 
@@ -14,7 +16,8 @@ const sentenceSelection = async paragraphs => {
     result += data;
   });
 
-  pythonProcess.stdout.on('close', () => result);
+  return result;
 };
 
-export default sentenceSelection;
+module.export = sentenceSelection;
+

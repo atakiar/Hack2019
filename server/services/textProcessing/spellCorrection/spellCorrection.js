@@ -11,7 +11,7 @@ const spellCorrection = async text => {
     result += data;
   });
 
-  pythonProcess.stdout.on('close', () => result);
+  return result;
 };
 
-export default spellCorrection;
+module.exports = spellCorrection;

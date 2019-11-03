@@ -1,3 +1,4 @@
 const spellCorrection = require('./spellCorrection');
 
-module.exports = { spellCorrection };
+module.exports = spellCorrection;
+
