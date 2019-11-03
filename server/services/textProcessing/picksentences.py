@@ -1,5 +1,8 @@
 from nltk.tokenize import sent_tokenize, word_tokenize
 from pprint import pprint
+import string
+import random
+
 def tokenize(paragraphs):
   paras = []
   for p in paragraphs:
@@ -46,6 +49,26 @@ def tokenize(paragraphs):
           
           
 peepee = ["I ate a potato. I like potatoes. Potatoes yummy.", "I a potato. I like potatoes. Potatoes are yummy.", "I ate potato. like potatoes. Potatoes are yummy."]
-
 print(tokenize(peepee))
+
+s = [""" CHAPTER 1. Loomings.
+
+There now is your insular city of the Manhattoes, belted round by wharves as Indian isles by coral reefs—commerce surrounds it with her surf. Right and left, the streets take you waterward. Its extreme downtown is the battery, where that noble mole is washed by waves, and cooled by breezes, which a few hours previous were out of sight of land. Look at the crowds of water-gazers there.
+"""]
+
+poopoo = s[0]
+for j in range(10):
+  copy = poopoo
+  for i in range(25):
+    x = random.randint(0,len(s[0]))
+    if x%4 == 0:
+      copy = copy[:x] + random.choice(string.ascii_letters + " ") + copy[x:]
+    elif x%3 == 0:
+      copy = copy[:x] + copy[x+1:]
+  s.append(copy)
+
+print(tokenize(s))
+
+
+
       
