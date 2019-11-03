@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  StyleSheet, Text, View, TouchableOpacity,
+  StyleSheet, Text, View, TouchableOpacity, TextProps, ViewProps
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import Theme from '../config/Theme';
 import depth from '../config/depth';
+import { } from 'react-native-elements';
 
 const size = 100;
 const margin = 20;
@@ -29,17 +30,18 @@ const ActionButton = ({
       alignContent: 'center',
       justifyContent: 'center',
       ...depth(1),
-    },
+    } as ViewProps,
 
     text: {
       textAlign: 'center',
       color: theme.text,
       fontSize: 18,
       fontWeight: 'bold',
-    },
+    } as TextProps,
   };
 
-  const icon = iconName ? <MaterialIcons name={iconName} size={iconSize} color={theme.text} style={{ textAlign: 'center' }} /> : null;
+  const icon = iconName ? <MaterialIcons name={iconName} size={iconSize} color={theme.text} style={{ textAlign: 'center' }
+  } /> : null
 
   return (
 
@@ -48,7 +50,7 @@ const ActionButton = ({
       onPress={onPress}
     >
       <View>{icon}</View>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}> {text} </Text>
     </TouchableOpacity>
   );
 };

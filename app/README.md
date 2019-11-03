@@ -3,7 +3,7 @@
 ## To Do
 
 * Fonts
-* Themes -> mildly implemented
+* Themes
 * Camera
 * HTTP requests
-* Text to speech
+* Text to speech 

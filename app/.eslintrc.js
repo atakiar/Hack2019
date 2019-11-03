@@ -4,24 +4,25 @@ module.exports = {
     node: true,
   },
   extends: [
-    'airbnb',
+    'plugin:@typescript-eslint/recommended'
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  parser: "babel-eslint",
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
     sourceType: 'module',
+    useJSXTextNode: true,
   },
   plugins: [
-    'react', 'jsx-a11y'
+    '@typescript-eslint', 'react', 'jsx-a11y'
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "semi": [1, "always"],
   },
 };

@@ -1,10 +1,10 @@
+import { ShadowStyleIOS } from 'react-native';
 
-const depth = (d) => {
-  if (d < 1) {
-    return null;
+const depth = (d: number): ShadowStyleIOS => {
+  if (d < 0) {
+    d = 0;
   } if (d > 5) {
-    console.error(`${d} is too deep. (nice)`);
-    return null;
+    d = 5;
   }
 
   const offsets = [0, 1.5, 3, 6, 10, 15];
