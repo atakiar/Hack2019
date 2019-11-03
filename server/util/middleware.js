@@ -22,10 +22,9 @@ router.use(
   })
 );
 router.use(helmet.noCache());
-router.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
 // BodyParser
-router.use(bodyParser.urlencoded({ extended: false, parameterLimit: 1 }));
+router.use(bodyParser.urlencoded({ extended: false, parameterLimit: 4 }));
 router.use(bodyParser.json());
 
 // HTTP Parameter Pollution
@@ -58,8 +57,9 @@ router.use((req, res, next) => {
 });
 
 // Log
-router.use(req => {
+router.use((req, res, next) => {
   console.log(req.url);
+  next();
 });
 
 module.exports = router;
