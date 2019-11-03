@@ -7,7 +7,19 @@
 import sys
 from collections import Counter
 
-CORPUS = Counter(open('corpus.txt').read().splitlines())
+def loadCorpus(option):
+    if option == 1:
+        result = {}
+        with open('./services/textProcessing/spellCorrection/custom/corpus_counts.txt') as file:
+            for line in file:
+                word, num = line.split()
+                result[word] = int(num)
+        return Counter(result)
+    else:
+        result = Counter(open('./services/textProcessing/spellCorrection/custom/corpus.txt').read().splitlines())
+        return result
+
+CORPUS = loadCorpus(1)
 CORPUS_COUNT = sum(CORPUS.values())
 LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 

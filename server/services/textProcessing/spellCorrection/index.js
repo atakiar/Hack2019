@@ -1,4 +1,4 @@
-const spellCorrection = require('./spellCorrection');
+const customBased = require('./custom/spellCorrection');
+const packageBased = require('./package/spellCorrection');
 
-module.exports = spellCorrection;
-
+module.exports = { customBased, packageBased };
