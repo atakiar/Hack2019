@@ -6,6 +6,7 @@ const router = express.Router();
 const pagesDB = require('../database/pagesDB');
 const imagesDB = require('../database/imagesDB');
 
+
 /** POST to [BaseAddress]/page/new
  * @description Adds a new image
  *
@@ -14,6 +15,7 @@ const imagesDB = require('../database/imagesDB');
  * @return {Object} result.token
  * @return {string} result.message
  */
+
 router.post('/new', async (req, res) => {
   try {
     const result = await pagesDB.add();
@@ -45,6 +47,7 @@ router.get('/get', async (req, res) => {
     let result = await pagesDB.get(pageID);
 
     if (!result.finalText) {
+
       const image = await imagesDB.get(pageID);
       const finalText = image.text;
       result = await pagesDB.update(pageID, finalText);
