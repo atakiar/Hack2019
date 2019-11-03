@@ -25,4 +25,8 @@ config/
 eng.traineddata
 /imageProcessing/eng.traineddata
 
+# Mongo
 mongo/
+
+# VSCode
+.vscode/
