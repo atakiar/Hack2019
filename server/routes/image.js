@@ -2,19 +2,20 @@
 const express = require('express');
 const router = express.Router();
 
-// Internal
+// Database
 const imagesDB = require('../database/imagesDB');
+
+// Internal
 const imageProcessing = require('../services/imageProcessing');
 const textProcessing = require('../services/textProcessing');
 
 /** POST to [BaseAddress]/image/add
  * @description Adds a new image
  *
- * @param {string} image image
+ * @param {string} image base64 encoded image
  *
  * @return {Object} result
  * @return {boolean} result.success
- * @return {string} result.text
  * @return {string} result.message
  */
 router.post('/add', async (req, res) => {
@@ -22,10 +23,10 @@ router.post('/add', async (req, res) => {
     const pageID = req.pageID;
     const image = req.body.image;
 
-    let { text: corpus } = imageProcessing.run(image);
-    corpus = textProcessing.spellCorrection(corpus);
+    let { text } = imageProcessing.run(image);
+    text = textProcessing.spellCorrection(text);
 
-    const result = await imagesDB.add(pageID, corpus);
+    const result = await imagesDB.add(pageID, text);
 
     res
       .status(200)

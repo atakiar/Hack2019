@@ -6,5 +6,3 @@ module.exports = {
   processImage,
   toBase64,
 };
-
-processImage(toBase64('./services/imageProcessing/test_images/test1.png'));

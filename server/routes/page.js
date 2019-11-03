@@ -4,6 +4,10 @@ const router = express.Router();
 
 // Database
 const pagesDB = require('../database/pagesDB');
+const imagesDB = require('../database/imagesDB');
+
+// Internal
+const textProcessing = require('../services/textProcessing');
 
 /** POST to [BaseAddress]/page/new
  * @description Adds a new image
@@ -41,7 +45,14 @@ router.get('/get', async (req, res) => {
   try {
     const pageID = req.pageID;
 
-    const result = await pagesDB.get(pageID);
+    let result = await pagesDB.get(pageID);
+
+    if (!result.finalText) {
+      const images = await imagesDB.getAll(pageID);
+      const paragraphs = images.map(image => image.text);
+      const finalText = textProcessing.sentenceSelection(paragraphs);
+      result = await pagesDB.update(pageID, finalText);
+    }
 
     res
       .status(200)
