@@ -13,14 +13,6 @@ const messages = require('./messages');
 
 // Helmet
 router.use(helmet());
-router.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'"],
-    },
-  })
-);
 router.use(helmet.noCache());
 
 // BodyParser
@@ -32,34 +24,34 @@ router.use(hpp());
 
 // Authorization
 router.use((req, res, next) => {
-  const unauthorized = () => {
-    res
-      .status(401)
-      .send(JSON.stringify(messages.unauthorized))
-      .end();
-  };
+    const unauthorized = () => {
+        res
+            .status(401)
+            .send(JSON.stringify(messages.unauthorized))
+            .end();
+    };
 
-  if (req.url === '/page/new') {
-    next();
-  } else if (req.headers.authorization) {
-    jwt
-      .verifyToken(req.headers.authorization)
-      .then(({ pageID }) => {
-        req.pageID = pageID;
+    if (req.url === '/website' || req.url === '/page/get' || req.url === '/page/new') {
         next();
-      })
-      .catch(() => {
+    } else if (req.headers.authorization) {
+        jwt
+            .verifyToken(req.headers.authorization)
+            .then(({ pageID }) => {
+                req.pageID = pageID;
+                next();
+            })
+            .catch(() => {
+                unauthorized();
+            });
+    } else {
         unauthorized();
-      });
-  } else {
-    unauthorized();
-  }
+    }
 });
 
 // Log
 router.use((req, res, next) => {
-  console.log(req.url);
-  next();
+    console.log(req.url);
+    next();
 });
 
 module.exports = router;

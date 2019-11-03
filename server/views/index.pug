@@ -17,9 +17,9 @@ html
           div.logo-container
             img(src='/images/icon.png').logo
 
-      form(action='/get-text', method="get")
+      form(action='/pages/get', method="get")
         .group
-          input(type='text', required='')
+          input(type='text', name='pageID', required='')
           span.highlight
           span.bar
           label Text ID
@@ -36,11 +36,9 @@ html
     
     div#data
       text#text
-        if gotText
-          each x in gotText
-            p.wordwrap #{x}
-            b
-            b
+        if x
+          p.wordwrap #{x}
+            
 
     div.speechbutton
       button#bark.bark
