@@ -33,18 +33,18 @@ const add = async (pageID, text) => {
   }
 };
 
-/** getAll
- * @description Gets all images associated with a pageID
+/** get
+ * @description Gets image associated with a pageID
  *
- * @return {Object} images
+ * @return {Object} image
  */
-const getAll = async pageID => {
+const get = async pageID => {
   try {
-    const images = await imagesCollection.findAll({ pageID });
-    return images;
+    const image = await imagesCollection.findOne({ pageID });
+    return image;
   } catch (error) {
     throw new Error(error);
   }
 };
 
-module.exports = { add, getAll };
+module.exports = { add, get };

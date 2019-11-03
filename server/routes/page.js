@@ -6,8 +6,6 @@ const router = express.Router();
 const pagesDB = require('../database/pagesDB');
 const imagesDB = require('../database/imagesDB');
 
-// Internal
-const textProcessing = require('../services/textProcessing');
 
 /** POST to [BaseAddress]/page/new
  * @description Adds a new image
@@ -17,7 +15,8 @@ const textProcessing = require('../services/textProcessing');
  * @return {Object} result.token
  * @return {string} result.message
  */
-router.get('/new', async (req, res) => {
+
+router.post('/new', async (req, res) => {
   try {
     const result = await pagesDB.add();
 
@@ -48,9 +47,9 @@ router.get('/get', async (req, res) => {
     let result = await pagesDB.get(pageID);
 
     if (!result.finalText) {
-      const images = await imagesDB.getAll(pageID);
-      const paragraphs = images.map(image => image.text);
-      const finalText = textProcessing.sentenceSelection(paragraphs);
+
+      const image = await imagesDB.get(pageID);
+      const finalText = image.text;
       result = await pagesDB.update(pageID, finalText);
     }
 
