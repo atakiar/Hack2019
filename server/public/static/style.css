@@ -360,3 +360,8 @@ body.bluelight {
     width: 14vh;
     margin: 0;
 }
+
+#data #text .wordwrap.error {
+    color: red;
+    font-size: 14vh;
+}
