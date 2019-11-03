@@ -27,6 +27,7 @@ interface ApiResponse {
   responseJson: {
     token?: string,
     text?: string,
+    pageID?: string,
   } | null,
   response: Response | null
 }

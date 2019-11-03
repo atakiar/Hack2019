@@ -13,7 +13,7 @@ import ActionButton from '../components/ActionButton';
 import Header from '../components/Header';
 
 
-export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean, hasPlayed: boolean, bestVoice: string }> {
+export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean, hasPlayed: boolean, bestVoice: string, id: string }> {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,8 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       modalVisible: false,
       isPlaying: false,
       hasPlayed: false,
-      bestVoice: ''
+      bestVoice: '',
+      id: ''
     };
 
   }
@@ -71,10 +72,12 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
     // make an http request
     const result = await sendImage(this.state.uri, this.state.base64);
 
-    const { text } = result;
+    const { text, pageID } = result;
+
+    console.log('pageID', pageID);
 
     // store the text
-    this.setState({ text, modalVisible: false, hasPlayed: false })
+    this.setState({ text, modalVisible: false, hasPlayed: false, id: pageID })
   }
 
   pickImage = async () => {
@@ -101,7 +104,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
     }
 
 
-    const image = await ImagePicker.launchCameraAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, allowsEditing: true, base64: true });
+    const image = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, allowsEditing: true, base64: true });
 
     if (!image.cancelled) {
       this.setState({ uri: image.uri, base64: image.base64, imageLoaded: true, modalVisible: true, });
@@ -110,7 +113,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
 
   render() {
     const {
-      text,
+      text, id
     } = this.state;
 
     const { navigation, screenProps } = this.props;
@@ -133,15 +136,15 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <Header title="Read" theme={theme} />
+          {id ? <Text style={[styles.text, { margin: 15 }]}>Page ID: {id}</Text> : null}
           <Text style={[styles.text, { margin: 15 }]}>{text}</Text>
           <Image
             style={{
               width: 100,
               height: 250,
               aspectRatio: 1,
-              position: 'relative',
-              top: theme.lineHeight,
-              left: theme.lineHeight
+              alignSelf: 'center',
+              marginTop: theme.lineHeight * 2
             }}
             resizeMode="contain"
             source={require('../../assets/images/computer.png')}

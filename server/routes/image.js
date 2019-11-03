@@ -28,9 +28,11 @@ router.post('/add', async (req, res) => {
 
     const result = await imagesDB.add(pageID, text);
 
+    console.log(result.text);
+
     res
       .status(200)
-      .send(JSON.stringify(result))
+      .send(JSON.stringify({ ...result, pageID }))
       .end();
   } catch (error) {
     res

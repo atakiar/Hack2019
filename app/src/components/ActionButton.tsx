@@ -16,7 +16,7 @@ const iconSize = 40;
 const ActionButton = ({
   text, index, onPress, iconName, theme,
 }) => {
-  const bottomDistance = margin + index * (margin + size);
+  const rightDistance = margin + index * (margin + size);
 
   const styles = {
     container: {
@@ -39,8 +39,6 @@ const ActionButton = ({
       textAlign: 'center',
 
       color: theme.primaryText,
-      fontSize: theme.fontSize,
-      lineHeight: theme.lineHeight,
       fontFamily: theme.fontFamily,
 
     } as TextProps,
@@ -52,7 +50,7 @@ const ActionButton = ({
   return (
 
     <TouchableOpacity
-      style={[styles.container, { bottom: bottomDistance }]}
+      style={[styles.container, { right: rightDistance }]}
       onPress={onPress}
     >
       <View>{icon}</View>

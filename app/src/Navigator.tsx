@@ -1,6 +1,6 @@
 import React from 'react'
 import { createAppContainer } from "react-navigation";
-import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 // import HistoryScreen from "./screens/History";
 import ReadScreen from "./screens/Read";
@@ -35,6 +35,9 @@ const AppNavigator = createBottomTabNavigator(
     }
   }, {
   initialRouteName: "Read",
+  tabBarOptions: {
+    showLabel: false,
+  },
   defaultNavigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
       const { routeName } = navigation.state;
@@ -46,8 +49,11 @@ const AppNavigator = createBottomTabNavigator(
         iconName = 'settings';
       }
 
-      return <MaterialIcons name={iconName} size={30} color={theme.primary} style={{ textAlign: 'center' }} />
+      return <MaterialIcons name={iconName} size={36} color={focused && theme ? theme.primary : 'gray'} style={{ textAlign: 'center' }} />
 
+    },
+    tabBarComponent: props => {
+      return <BottomTabBar {...props} style={{ backgroundColor: theme.backgroundColor }} />
     }
   })
 });
