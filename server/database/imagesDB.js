@@ -17,37 +17,41 @@ imagesCollection.createIndex({ pageID: 1 });
  * @return {string} result.text
  * @return {string} result.message
  */
-const add = async (pageID, text) => {
-  let response = { success: false };
+const add = async(pageID, text) => {
+    let response = { success: false };
 
-  try {
-    await imagesCollection.insert({
-      pageID,
-      text,
-    });
+    try {
+        await imagesCollection.insert({
+            pageID,
+            text,
+        });
 
-    response.success = true;
-    response.text = text;
-    return response;
-  } catch (error) {
-    response.message = messages.error;
-    throw new Error(response);
-  }
+        response.success = true;
+        response.text = text;
+        return response;
+    } catch (error) {
+        response.message = messages.error;
+        throw new Error(response);
+    }
 };
 
 const get = async pageID => {
-  let response = { success: false };
+    let response = { success: false };
 
-  try {
-    const image = await imagesCollection.findOne({ pageID });
+    try {
+        const image = await imagesCollection.findOne({ pageID });
 
-    response.success = true;
-    response.text = image.text;
-    return response;
-  } catch (error) {
-    response.message = messages.error;
-    throw new Error(response);
-  }
+        if (!image) {
+            return response;
+        }
+
+        response.success = true;
+        response.text = image.text;
+        return response;
+    } catch (error) {
+        response.message = messages.error;
+        throw new Error(response);
+    }
 };
 
 module.exports = { add, get };
