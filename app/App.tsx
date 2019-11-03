@@ -4,6 +4,6 @@ import Main from './src/Main';
 // eslint-disable-next-line no-console
 console.disableYellowBox = true;
 
-export default function App() {
-  return <Main />;
-}
+const App = () => <Main />;
+
+export default App;

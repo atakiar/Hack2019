@@ -21,6 +21,7 @@ const standard: Group = {
     { name: 'accent', value: '#cccccc' },
     { name: 'fontSize', title: 'Font Size', value: 18 },
     { name: 'lineHeight', title: 'Line Height', value: 35 },
+    { name: 'fontFamily', title: 'Font', value: 'System' }
   ]
 };
 
@@ -40,7 +41,8 @@ const dyslexia: Group = {
   name: 'dyslexia',
   rules: [
     { name: 'backgroundColor', value: '#ffff00', title: 'Background Color' },
-    { name: 'lineHeight', value: 40, title: 'Line Height' }
+    { name: 'lineHeight', value: 40, title: 'Line Height' },
+    { name: 'fontFamily', value: 'open-dyslexic', title: 'Font' }
   ]
 };
 
@@ -72,6 +74,8 @@ class Theme {
   backgroundColor: string;
 
   fontSize: number;
+
+  fontFamily: 'string';
 
   text: string;
 
@@ -168,7 +172,6 @@ class Theme {
     return active
   }
 }
-
 
 export default Theme;
 

@@ -24,12 +24,16 @@ const GroupItem = (props: Props) => {
       flex: 1,
     } as ViewProps,
     text: {
+
+      color: theme.text,
       fontSize: theme.fontSize,
+      lineHeight: theme.lineHeight,
+      fontFamily: theme.fontFamily,
+
       flex: 1,
       marginTop: 3,
       marginLeft: 12,
       marginRight: 12,
-      color: theme.text
     },
   }
 

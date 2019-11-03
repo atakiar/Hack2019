@@ -49,7 +49,10 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
         color: theme.text,
         fontSize: theme.fontSize,
         lineHeight: theme.lineHeight,
+        fontFamily: theme.fontFamily,
+
         margin: 15,
+        fontFamily: theme.fontFamily,
       }
     };
 

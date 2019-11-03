@@ -34,9 +34,12 @@ const ActionButton = ({
 
     text: {
       textAlign: 'center',
+
       color: theme.text,
-      fontSize: 18,
-      fontWeight: 'bold',
+      fontSize: theme.fontSize,
+      lineHeight: theme.lineHeight,
+      fontFamily: theme.fontFamily,
+
     } as TextProps,
   };
 
