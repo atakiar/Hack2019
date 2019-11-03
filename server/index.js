@@ -16,3 +16,6 @@ const httpServer = http.createServer(app);
 httpServer.listen(3000, () => {
   console.log('Server running at 3000');
 });
+
+const stuff = require('./__tests__/test');
+stuff.run();
