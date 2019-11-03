@@ -17,6 +17,10 @@
     padding: 0;
 }
 
+form {
+    clear: left;
+}
+
 
 /*anmols highlighting bullshit*/
 
@@ -193,7 +197,7 @@ input:focus {
 label {
     color: #1c304a;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: bold;
     position: absolute;
     pointer-events: none;
     left: 1vw;
@@ -331,4 +335,29 @@ body.bluelight {
     /* Opera 7 */
     word-wrap: break-word;
     /* IE */
+}
+
+.header {
+    text-align: center;
+    margin: 0px auto;
+    width: auto;
+}
+
+.header>div {
+    display: inline-block;
+}
+
+.logo {
+    height: 10vh;
+    width: 10vh;
+    position: relative;
+    margin: 0;
+    top: 1vh;
+    left: 1vh;
+}
+
+.largetext .logo {
+    height: 14vh;
+    width: 14vh;
+    margin: 0;
 }
