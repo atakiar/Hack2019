@@ -4,6 +4,7 @@
   "description": "Hack2019 Server",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +18,24 @@
   },
   "homepage": "https://github.com/atakiar/Hack2019#readme",
   "devDependencies": {
-    "eslint": "^6.6.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "hpp": "^0.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.3.3",
+    "monk": "^7.1.1",
+    "randomstring": "^1.1.5",
+    "tesseract.js": "^2.0.0-beta.2"
   }
 }

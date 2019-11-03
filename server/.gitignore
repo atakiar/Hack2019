@@ -7,6 +7,7 @@ yarn-error.log*
 
 # python venv
 venv/
+services/textProcessing/env
 
 # Dependency directories
 node_modules/
@@ -19,3 +20,7 @@ node_modules/
 
 # config
 config/
+
+# Services
+eng.traineddata
+/imageProcessing/eng.traineddata
