@@ -5,7 +5,10 @@ const spawn = require('child_process').spawn;
 const sentenceSelection = async paragraphs => {
   let result = '';
 
-  const pythonProcess = spawn('python', ['./spellCorrection.py', paragraphs]);
+  const pythonProcess = spawn('python', [
+    './spellCorrection.py',
+    ...paragraphs
+  ]);
 
   pythonProcess.stdout.on('data', data => {
     result += data;
