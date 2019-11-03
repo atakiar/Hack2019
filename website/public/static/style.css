@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("opendyslexic.woff");
+}
+
 
 /* basic stylings ------------------------------------------ */
 
@@ -12,14 +17,64 @@
     padding: 10px 50px 50px;
 }
 
+
+/*Normal*/
+
 .button {
     background-color: #046B99;
     color: #B3EFFF;
 }
 
-.button:hover,
-.button:focus {
+.button:focus,
+.button:hover {
     background-color: #00CFFF;
+}
+
+
+/*Dyslexic*/
+
+.dyslexic .button {
+    background-color: darkslategray;
+    color: yellow;
+    font-family: OpenDyslexic;
+}
+
+.dyslexic .button:focus,
+.dyslexic .button:hover {
+    background-color: darkgray;
+}
+
+
+/*LargeText*/
+
+.largetext .button {
+    font-size: 140%;
+}
+
+
+/*Darkmode*/
+
+#body.darkmode .button {
+    background-color: gray;
+    color: whitesmoke;
+}
+
+#body.darkmode .button:hover,
+#body.darkmode .button:focus {
+    background-color: darkslategray;
+}
+
+
+/*Bluelight*/
+
+body.bluelight .button {
+    background-color: #BF6416;
+    color: #FFE594;
+}
+
+body.bluelight .button:hover,
+body.bluelight .button:focus {
+    background-color: #EEA337;
 }
 
 h1 {
@@ -30,12 +85,22 @@ h1 {
 }
 
 
-/* form starting stylings ------------------------------- */
+/*LargeText*/
+
+body.largetext h1 {
+    font-size: 14vh;
+}
+
+
+/* INPUT*/
 
 .group {
     position: relative;
     margin-bottom: 45px;
 }
+
+
+/*Normal*/
 
 input {
     font-size: 18px;
@@ -48,12 +113,51 @@ input {
     border-bottom: 1px solid #1C304A;
 }
 
+
+/*LargeText*/
+
+.largetext input {
+    font-size: 7vh;
+    height: 7vh;
+    width: 65vw;
+}
+
+
+/*Dyslexic*/
+
+.dyslexic input {
+    color: yellow;
+    background: black;
+    border-bottom: 1px solid yellow;
+}
+
+
+/*Darkmode*/
+
+#body.darkmode input {
+    color: whitesmoke;
+    background: black;
+    border-bottom: 1px solid whitesmoke;
+}
+
+
+/*Bluelight*/
+
+body.bluelight input {
+    color: #5E1E00;
+    background: #FFE594;
+    border-bottom: 1px solid #5E1E00;
+}
+
 input:focus {
     outline: none;
 }
 
 
 /* LABEL ======================================= */
+
+
+/*Normal*/
 
 label {
     color: #1C304A;
@@ -68,13 +172,57 @@ label {
     -webkit-transition: 0.2s ease all;
 }
 
-
-/* active state */
-
 input:focus~label {
     top: -20px;
     font-size: 14px;
     color: #1C304A;
+}
+
+
+/*Largetext*/
+
+.largetext label {
+    font-size: 4vh;
+    left: 1vw;
+    top: 1vh;
+}
+
+.largetext input:focus~label {
+    top: -4.5vh;
+    font-size: 4vh;
+}
+
+
+/*dyslexic*/
+
+.dyslexic label {
+    color: yellow;
+}
+
+.dyslexic input:focus~label {
+    color: yellow;
+}
+
+
+/*darkmode*/
+
+#body.darkmode label {
+    color: whitesmoke;
+}
+
+#body.darkmode input:focus~label {
+    color: whitesmoke;
+}
+
+
+/*bluelight*/
+
+body.bluelight label {
+    color: #5E1E00;
+}
+
+body.bluelight input:focus~label {
+    color: #5E1E00;
 }
 
 
@@ -112,6 +260,26 @@ body {
     color: #1C304A;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
+}
+
+.largetext {
+    font-weight: 900;
+}
+
+.dyslexic {
+    background: black;
+    color: yellow;
+    font-family: OpenDyslexic, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#body.darkmode {
+    background: black;
+    color: whitesmoke;
+}
+
+body.bluelight {
+    background: #FFE594;
+    color: #5E1E00;
 }
 
 .content {

@@ -8,7 +8,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
     script(src='/javascripts/accessibility.js')
       
-  body
+  body#body.normal
     div.container
       header
         h1 Blind Bois
@@ -18,14 +18,14 @@ html
           input(type='text')
           span.highlight
           span.bar
-          label TEXT ID
+          label Page Id
       div.content
         | #{gotText}
     
     div.bar
       button#normal.button Normal
       button#darkmode.button Dark Mode
-      button#bluelight.button Blue Light Filter
+      button#bluelight.button Blue Light
       button#largetext.button Large Text
       button#dyslexic.button Dyslexic
 
