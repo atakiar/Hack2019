@@ -16,6 +16,14 @@ HackOHI/O 2019
 - [ ] Styling for text
 - [ ] Text to speech
 
+### App
+- [ ] Fonts -> Doesn't do **bold** OpenDyslexic
+- [ ] Themes -> Styling
+- [ ] Camera
+- [ ] HTTP requests
+- [ ] Text to speech -> Need controls
+- [ ] Design
+
 ### Other
 - [ ] Name
 - [ ] Graphics
