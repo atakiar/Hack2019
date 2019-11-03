@@ -1,0 +1,333 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url("opendyslexic.woff");
+}
+
+
+/* basic stylings ------------------------------------------ */
+
+.container {
+    width: 55vw;
+    margin: 30px auto 0;
+    display: block;
+    padding: 10px 50px 50px;
+}
+
+
+/*anmols highlighting bullshit*/
+
+.dyslexic button#dyslexic.button {
+    border-bottom: 2px solid white;
+}
+
+.darkmode button#darkmode.button {
+    border-bottom: 2px solid white;
+}
+
+.bluelight button#bluelight.button {
+    border-bottom: 2px solid white;
+}
+
+.largetext button#largetext.button {
+    border-bottom: 2px solid white;
+}
+
+
+/*Normal*/
+
+button {
+    background-color: #046B99;
+    color: #B3EFFF;
+}
+
+.button:focus,
+.button:hover,
+.bark:focus,
+.bark:hover {
+    background-color: #00CFFF;
+}
+
+
+/*Dyslexic*/
+
+.dyslexic .button,
+.dyslexic .bark {
+    background-color: darkslategray;
+    color: yellow;
+    font-family: OpenDyslexic;
+}
+
+.dyslexic .button:focus,
+.dyslexic .button:hover,
+.dyslexic .bark:focus,
+.dyslexic .bark:hover {
+    background-color: darkgray;
+}
+
+
+/*LargeText*/
+
+.largetext .button,
+.largetext .bark {
+    font-size: 140%;
+}
+
+
+/*Darkmode*/
+
+#body.darkmode .button,
+#body.darkmode .bark {
+    background-color: gray;
+    color: whitesmoke;
+}
+
+#body.darkmode .button:hover,
+#body.darkmode .button:focus,
+#body.darkmode .bark:hover,
+#body.darkmode .bark:focus {
+    background-color: darkslategray;
+}
+
+
+/*Bluelight*/
+
+body.bluelight .button,
+body.bluelight .bark {
+    background-color: #BF6416;
+    color: #FFE594;
+}
+
+body.bluelight .button:hover,
+body.bluelight .button:focus,
+body.bluelight .bark:hover,
+body.bluelight .bark:focus {
+    background-color: #EEA337;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10vh;
+    font-weight: bold;
+    font-size: 10vh;
+}
+
+
+/*LargeText*/
+
+body.largetext h1 {
+    font-size: 14vh;
+}
+
+
+/* INPUT*/
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+
+/*Normal*/
+
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    width: 100%;
+    border: none;
+    color: #1C304A;
+    background: #B3EFFF;
+    border-bottom: 1px solid #1C304A;
+}
+
+
+/*LargeText*/
+
+.largetext input {
+    font-size: 10vh;
+    height: 10vh;
+    width: 100%;
+}
+
+
+/*Dyslexic*/
+
+.dyslexic input {
+    color: yellow;
+    background: black;
+    border-bottom: 1px solid yellow;
+}
+
+
+/*Darkmode*/
+
+#body.darkmode input {
+    color: whitesmoke;
+    background: black;
+    border-bottom: 1px solid whitesmoke;
+}
+
+
+/*Bluelight*/
+
+body.bluelight input {
+    color: #5E1E00;
+    background: #FFE594;
+    border-bottom: 1px solid #5E1E00;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+/* LABEL ======================================= */
+
+
+/*Normal*/
+
+label {
+    color: #1C304A;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 1vw;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+input:focus~label {
+    top: -20px;
+    font-size: 14px;
+    color: #1C304A;
+}
+
+input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: #1C304A;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+
+/*Largetext*/
+
+.largetext label {
+    font-size: 5vh;
+    left: 1vw;
+    top: 1vh;
+}
+
+.largetext input:focus~label {
+    top: -4.5vh;
+    font-size: 4vh;
+}
+
+.largetext input:valid~label {
+    top: -4.5vh;
+    font-size: 4vh;
+}
+
+
+/*dyslexic*/
+
+.dyslexic label {
+    color: yellow;
+}
+
+.dyslexic input:focus~label {
+    color: yellow;
+}
+
+
+/*darkmode*/
+
+#body.darkmode label {
+    color: whitesmoke;
+}
+
+#body.darkmode input:focus~label {
+    color: whitesmoke;
+}
+
+
+/*bluelight*/
+
+body.bluelight label {
+    color: #5E1E00;
+}
+
+body.bluelight input:focus~label {
+    color: #5E1E00;
+}
+
+
+/* active state */
+
+input:focus~.bar:before,
+input:focus~.bar:after {
+    width: 50%;
+}
+
+
+/* HIGHLIGHTER ================================== */
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active state */
+
+input:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+body {
+    background: #B3EFFF;
+    color: #1C304A;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.largetext {
+    font-weight: 900;
+}
+
+.dyslexic {
+    background: black;
+    color: yellow;
+    font-family: OpenDyslexic, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#body.darkmode {
+    background: black;
+    color: whitesmoke;
+}
+
+body.bluelight {
+    background: #FFE594;
+    color: #5E1E00;
+}
+
+.content {
+    text-align: right;
+}
