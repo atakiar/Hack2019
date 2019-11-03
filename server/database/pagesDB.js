@@ -34,6 +34,7 @@ const add = async () => {
 
     response.token = token;
     response.success = true;
+
     return response;
   } catch (error) {
     response.message = messages.error;
@@ -55,12 +56,7 @@ const get = async pageID => {
   try {
     const page = await pagesCollection.findOne({ pageID });
 
-    if (page.finalText) {
-      response.text = page.finalText;
-    } else {
-      response.text = '';
-    }
-
+    response.text = page.text;
     response.success = true;
     return response;
   } catch (error) {
@@ -69,30 +65,5 @@ const get = async pageID => {
   }
 };
 
-/** update
- * @description Updates a page's finalText
- *
- * @return {Object} result
- * @return {boolean} result.success
- * @return {Object} result.text
- * @return {string} result.message
- */
-const update = async (pageID, finalText) => {
-  let response = { success: false };
 
-  try {
-    const page = await pagesCollection.update(
-      { pageID },
-      { $set: { finalText } }
-    );
-
-    response.text = page.finalText;
-    response.success = true;
-    return response;
-  } catch (error) {
-    response.message = messages.error;
-    throw new Error(response);
-  }
-};
-
-module.exports = { add, get, update };
+module.exports = { add, get };

@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, SafeAreaView, ScrollView, View, Text, Alert, Image
+  SafeAreaView, ScrollView, View, Text, Alert, Image, ImageStyle
 } from 'react-native';
-import { Button, ThemeProvider } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import ActionButton from '../components/ActionButton';
+import { sendImage } from '../services/api/api'
 import * as Speech from 'expo-speech';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 
 
-export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean }> {
+export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean }> {
   constructor(props) {
     super(props);
     this.state = {
-      text: "you stone ages, carbon dioxide breathing, primordial, brick munching Troglodyte.",
+      text: "With Lumen, you can read and listen to the documents and books that would otherwise be inaccessible.\n\nTouch 'Camera' to get started.",
       uri: '',
+      base64: '',
       imageLoaded: false,
       modalVisible: false,
+      isPlaying: false
     };
   }
 
-  sendImage = () => {
+  sendImage = async () => {
     // make an http request
+    const result = await sendImage(this.state.uri, this.state.base64);
+    console.log(result);
 
-    // set this.state.text
+    const { text } = result;
 
+    // store the text
+    this.setState({ text, modalVisible: false })
   }
 
   pickImage = async () => {
@@ -34,8 +41,6 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       const result = await Permissions.getAsync(Permissions.CAMERA_ROLL, Permissions.CAMERA);
 
       status = result.status;
-
-      console.log(status);
 
     } catch (error) {
       console.log(error);
@@ -54,10 +59,10 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
     }
 
 
-    const image = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, allowsEditing: true });
+    const image = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, allowsEditing: true, base64: true });
 
     if (!image.cancelled) {
-      this.setState({ uri: image.uri, imageLoaded: true, modalVisible: true, });
+      this.setState({ uri: image.uri, base64: image.base64, imageLoaded: true, modalVisible: true, });
     }
   }
 
@@ -84,8 +89,6 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
         fontSize: theme.fontSize,
         lineHeight: theme.lineHeight,
         fontFamily: theme.fontFamily,
-
-        margin: 15,
       }
     };
 
@@ -93,57 +96,69 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <Button
+            raised
             title="Camera"
-            type="clear"
+            containerStyle={{ margin: 12 }}
+            buttonStyle={{ backgroundColor: theme.primary }}
             onPress={this.pickImage}
           />
           <Button
             raised
-            title="Settings"
-            icon={{
-              name: 'accessibility',
-              size: 15,
-              color: 'white',
-              type: 'material',
-            }}
-            iconRight
+            title="Options"
+            buttonStyle={{ backgroundColor: theme.primary }}
+            containerStyle={{ margin: 12 }}
             onPress={() => navigation.navigate('Settings')}
           />
-          <Text style={styles.text}>{text}</Text>
+          <Text style={[styles.text, { margin: 15 }]}>{text}</Text>
+          <Image
+            style={{
+              width: 100,
+              height: 250,
+              aspectRatio: 1,
+              position: 'relative',
+              top: theme.lineHeight,
+              left: theme.lineHeight
+            }}
+            resizeMode="contain"
+            source={require('../../assets/images/computer.png')}
+          />
         </ScrollView>
         <Modal
           isVisible={this.state.imageLoaded && this.state.modalVisible}
           onSwipeComplete={() => this.setState({ modalVisible: false })}
           swipeDirection={['left', 'right', 'down', 'up']}
-          style={{ justifyContent: 'flex-end', marginLeft: 10, marginRight: 10, marginBottom: 0 }}
+          style={{ justifyContent: 'flex-end', margin: 0 }}
           onBackdropPress={() => this.setState({ modalVisible: false })}
         >
-          <View style={{ margin: 0, alignItems: 'center', backgroundColor: 'white', padding: 36, borderTopEndRadius: 30, borderTopStartRadius: 30 }}>
+          <View style={{ alignItems: 'center', backgroundColor: theme.backgroundColor, justifyContent: 'flex-end', padding: theme.lineHeight, borderTopEndRadius: 30, borderTopStartRadius: 30 }}>
             <Image
               style={{
-                width: 360,
-                height: 360,
-                alignSelf: 'center'
+                width: '100%',
+                // height: undefined,
+                aspectRatio: 1,
+                marginBottom: theme.lineHeight / 2,
               }}
               resizeMode="contain"
               source={{ uri: this.state.uri }}
             />
-            <View style={{ flexDirection: 'row', width: 350, marginTop: 12 }}>
-              <Button
-                title="Cancel"
-                onPress={() => this.setState({ modalVisible: false })}
-                containerStyle={{ flex: 1 }}
-              />
-              <Button
-                title="Scan"
-                onPress={this.sendImage}
-                containerStyle={{ flex: 1, marginLeft: 12 }}
-              />
-            </View>
+            <Button
+              title="Scan"
+              titleStyle={[styles.text, { color: theme.primaryText }]}
+              onPress={this.sendImage}
+              buttonStyle={{ backgroundColor: theme.primary }}
+              containerStyle={{ width: '100%', marginBottom: theme.lineHeight / 2 }}
+            />
+            <Button
+              title="Cancel"
+              titleStyle={[styles.text, { color: theme.primaryText, }]}
+              buttonStyle={{ backgroundColor: theme.danger }}
+              onPress={() => this.setState({ modalVisible: false })}
+              containerStyle={{ width: '100%', marginBottom: theme.lineHeight / 2 }}
+            />
           </View>
         </Modal>
-        <ActionButton text="Read Aloud" theme={theme} onPress={this.sayText} />
-      </SafeAreaView>
+        <ActionButton text="Listen" theme={theme} onPress={this.sayText} iconName="hearing" />
+      </SafeAreaView >
     );
   }
 }

@@ -16,18 +16,25 @@ const setup = req => {
     req.body = JSON.stringify(req.body);
   }
 
+  if (!req.contentType) {
+    req.contentType = 'application/json'
+  }
+
   return req;
 };
 
 interface ApiResponse {
-  responseJson: object | null,
+  responseJson: {
+    token?: string,
+    text?: string,
+  } | null,
   response: Response | null
 }
 
 const request = async (req): Promise<ApiResponse> => {
   // Setup
   const {
-    method, url, time, token, body,
+    method, url, time, token, body, contentType
   } = setup(req);
 
   // Request
@@ -37,7 +44,7 @@ const request = async (req): Promise<ApiResponse> => {
       fetch(url, {
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
+          'Content-Type': contentType,
           Authorization: token,
         },
         method,
@@ -61,7 +68,6 @@ const request = async (req): Promise<ApiResponse> => {
   } catch (error) {
     return { responseJson: null, response: null };
   }
-
   return { responseJson: null, response: null };
 };
 

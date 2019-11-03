@@ -26,7 +26,8 @@
     "react-native-screens": "^2.0.0-alpha.7",
     "react-native-web": "^0.11.7",
     "react-navigation": "^4.0.10",
-    "react-navigation-stack": "^1.10.3"
+    "react-navigation-stack": "^1.10.3",
+    "rn-fetch-blob": "^0.11.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.6.0",

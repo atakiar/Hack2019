@@ -15,10 +15,6 @@ const spellCorrection = text => new Promise((resolve, reject) => {
       result += data;
       resolve(result);
     });
-
-    pythonProcess.stderr.on('data', error => {
-      console.log(error.toString());
-    });
   } catch (error) {
     reject(error);
   }

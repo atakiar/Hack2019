@@ -14,6 +14,7 @@ imagesCollection.createIndex({ pageID: 1 });
  *
  * @return {Object} result
  * @return {boolean} result.success
+ * @return {string} result.text
  * @return {string} result.message
  */
 const add = async (pageID, text) => {
@@ -26,6 +27,7 @@ const add = async (pageID, text) => {
     });
 
     response.success = true;
+    response.text = text;
     return response;
   } catch (error) {
     response.message = messages.error;
@@ -33,18 +35,5 @@ const add = async (pageID, text) => {
   }
 };
 
-/** get
- * @description Gets image associated with a pageID
- *
- * @return {Object} image
- */
-const get = async pageID => {
-  try {
-    const image = await imagesCollection.findOne({ pageID });
-    return image;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
 
-module.exports = { add, get };
+module.exports = { add };

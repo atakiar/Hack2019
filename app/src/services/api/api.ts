@@ -1,24 +1,43 @@
-import request from './request'
+import request from './request';
+import { times } from './config';
 
-const sendImage = async (uri: string): Promise<boolean> => {
+const sendImage = async (uri: string, base64: string): Promise<{ success: boolean, text: string }> => {
   const tokenURL = '/page/new';
   const addURL = '/image/add';
+  const textURL = '/page/get';
+
   try {
-    const tokenRes = await request({ url: tokenURL, method: 'POST' })
+    const tokenRes = await request({ url: tokenURL, method: 'POST', time: times.long });
 
     if (!tokenRes.responseJson) {
-      return false;
+      return { success: false, text: '' };
     }
 
-    const { token } = tokenRes.responseJson;
+    const { token = '' } = tokenRes.responseJson;
 
-    const imageRes = await request({ url: addURL, token, method: 'POST' })
+    const name = uri.split('/').pop();
+
+    if (!name) {
+      return { success: false, text: '' };
+    }
+
+    const imageRes = await request({ url: addURL, token, method: 'POST', body: { image: `data:image/jpeg;base64,${base64}` } });
 
     if (!imageRes.responseJson) {
-      return false;
+      return { success: false, text: '' };
     }
 
-  }
+    console.log(imageRes.responseJson)
 
-  return true;
-}
+    const { text = '' } = imageRes.responseJson;
+
+    console.log(text);
+
+    return { success: true, text }
+  } catch (error) {
+    console.log(error);
+    return { success: false, text: '' };
+  }
+};
+
+export { sendImage };
