@@ -1,6 +1,3 @@
-import { Function } from 'lodash';
-
-
 export interface Rule {
   name: string
   title?: string,

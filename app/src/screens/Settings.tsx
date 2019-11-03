@@ -8,13 +8,6 @@ import Theme, { groups, Group, Rule } from '../config/Theme';
 import RuleItem from './../components/Items/RuleItem'
 import GroupItem from './../components/Items/GroupItem'
 
-interface Setting {
-  data: {
-    title: string,
-    name: string
-  },
-  active: boolean
-};
 
 const makeButtonData = (theme: Theme): { title: { group: Group, active: boolean }, data: { rule: Rule, active: boolean }[] }[] => {
   const data = groups.map((group) => ({
