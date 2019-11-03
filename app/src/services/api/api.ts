@@ -27,13 +27,9 @@ const sendImage = async (uri: string, base64: string): Promise<{ success: boolea
       return { success: false, text: '' };
     }
 
-    const textRes = await request({ url: textURL, token })
+    console.log(imageRes.responseJson)
 
-    if (!textRes.responseJson) {
-      return { success: false, text: '' };
-    }
-
-    const { text = '' } = textRes.responseJson;
+    const { text = '' } = imageRes.responseJson;
 
     console.log(text);
 

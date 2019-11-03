@@ -41,7 +41,7 @@ def main(text):
 
     sentences = tokenize(text)
     for sentence in sentences:
-        result += spellCorrection(sentence)
+        result += spellCorrection(sentence) + '. '
 
     print(result)
     sys.stdout.flush()

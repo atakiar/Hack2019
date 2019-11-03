@@ -24,3 +24,5 @@ config/
 # Services
 eng.traineddata
 /imageProcessing/eng.traineddata
+
+mongo/
