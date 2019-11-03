@@ -48,9 +48,16 @@ router.get('/get', async(req, res) => {
 
         console.log(result.text);
 
-        res.render('index', {
-            x: result.text
-        });
+        if (result.text) {
+            res.render('index', {
+                x: result.text,
+                err: false
+            });
+        } else {
+            res.render('index', {
+                err: true
+            });
+        }
     } catch (error) {
         res
             .status(500)
