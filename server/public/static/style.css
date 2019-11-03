@@ -363,5 +363,6 @@ body.bluelight {
 
 #data #text .wordwrap.error {
     color: red;
-    font-size: 14vh;
+    font-size: 12vh;
+    line-height: 14vh;
 }
