@@ -1,10 +1,22 @@
 # Hack2019
 HackOHI/O 2019
 
-# AND SO IT BEGINS
+## To Do
+
+### App
 
 
-# Website todo:
-* Styling on text to speech button
-* Styling for text
-* text to speech
+### Server
+[ ] Testing
+[ ] Tesseract speed
+[ ] Ngram spell checking
+
+### Website
+[ ] Styling on text to speech button
+[ ] Styling for text
+[ ] Text to speech
+
+### Other
+[ ] Name
+[ ] Graphics
+[ ] Presentation
