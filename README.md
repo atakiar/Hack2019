@@ -8,7 +8,7 @@ HackOHI/O 2019
 
 ### Server
 - [ ] Testing
-- [ ] Tesseract speed
+- [x] Tesseract speed
 - [ ] Ngram spell checking
 
 ### Website
