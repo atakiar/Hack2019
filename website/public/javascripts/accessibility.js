@@ -11,6 +11,7 @@ function bark() {
     if ('speechSynthesis' in window) {
         var text = document.getElementById("text").innerText;
         var synthesis = window.speechSynthesis;
+        speechSynthesis.cancel();
 
         // Get the first `en` language voice in the list
         var voice = synthesis.getVoices().filter(function(voice) {

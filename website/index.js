@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const t = "you stone ages, carbon dioxide breathing, primordial gloop, brick munching troglodyte."
+
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
 
@@ -9,8 +9,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/get-text', (req, res) => {
+    const t = "you stone ages, carbon dioxide breathing, primordial gloop, brick munching troglodyte.";
+    const t2 = "I like potatoes. Potatoes are rich in starch.";
+    const blah = [t, t2];
     res.render('index', {
-        gotText: t
+        gotText: blah
     });
 });
 

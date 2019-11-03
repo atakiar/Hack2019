@@ -30,7 +30,10 @@ html
     
     div
       text#text
-        | #{gotText}
+      each x in gotText
+        p #{x}
+        b
+        b
 
     div.speechbutton
       button#bark.bark
