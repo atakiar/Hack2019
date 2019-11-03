@@ -6,7 +6,7 @@ const router = express.Router();
 const pageRouter = require('./page.js');
 const imageRouter = require('./image.js');
 
-// Use private app routers
+// Use app routers
 router.use('/page', pageRouter);
 router.use('/image', imageRouter);
 

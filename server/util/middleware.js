@@ -16,7 +16,9 @@ router.use(helmet());
 router.use(helmet.noCache());
 
 // BodyParser
-router.use(bodyParser.urlencoded({ extended: false, parameterLimit: 4, limit: '5mb' }));
+router.use(
+  bodyParser.urlencoded({ extended: false, parameterLimit: 4, limit: '5mb' })
+);
 router.use(bodyParser.json({ limit: '5mb' }));
 
 // HTTP Parameter Pollution
@@ -31,7 +33,11 @@ router.use((req, res, next) => {
       .end();
   };
 
-  if (req.url === '/website' || /\/page\/get\?.*/.test(req.url) || req.url === '/page/new') {
+  if (
+    req.url === '/website'
+    || /\/page\/get\?.*/.test(req.url)
+    || req.url === '/page/new'
+  ) {
     next();
   } else if (req.headers.authorization) {
     jwt
