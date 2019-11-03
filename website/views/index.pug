@@ -7,12 +7,12 @@ html
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name="viewport" content="width=device-width, initial-scale=1")
     script(src='/javascripts/accessibility.js')
-      
+
   body#body.normal
     div.container
       header
         h1 Blind Bois
-      
+
       form(action='/get-text', method="get")
         .group
           input(type='text', required='')
@@ -27,8 +27,10 @@ html
       button#largetext.button Large Text
       button#dyslexic.button Dyslexic
 
+    br
+    br
     
-    div
+    div#data
       text#text
       each x in gotText
         p #{x}
