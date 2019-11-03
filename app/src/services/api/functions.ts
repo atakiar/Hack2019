@@ -1,11 +1,15 @@
-const timeout = (ms: number, promise: Promise<Response>) => new Promise((resolve, reject) => {
+const timeout = async (ms: number, promise: Promise<Response>) => {
   setTimeout(() => {
-    reject(new Error('Timed out'));
+    return Error('Timed out');
   }, ms);
-  promise.then(resolve, reject);
-});
 
-const urlJoin = (url1, url2) => {
+  const result = await promise;
+  return result;
+}
+
+
+
+const urlJoin = (url1: string, url2: string): string => {
   let totalUrl = url1;
 
   if (url2[0] === '/') {

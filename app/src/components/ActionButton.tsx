@@ -16,26 +16,29 @@ const iconSize = 40;
 const ActionButton = ({
   text, index, onPress, iconName, theme,
 }) => {
-  const rightDistance = margin + index * (margin + size);
+  const bottomDistance = margin + index * (margin + size);
 
   const styles = {
     container: {
       width: size,
       height: size,
       backgroundColor: theme.primary,
+
       position: 'absolute',
       right: margin,
       bottom: margin,
+
       borderRadius: size / 2,
       alignContent: 'center',
       justifyContent: 'center',
+
       ...depth(1),
     } as ViewProps,
 
     text: {
       textAlign: 'center',
 
-      color: theme.text,
+      color: theme.primaryText,
       fontSize: theme.fontSize,
       lineHeight: theme.lineHeight,
       fontFamily: theme.fontFamily,
@@ -43,13 +46,13 @@ const ActionButton = ({
     } as TextProps,
   };
 
-  const icon = iconName ? <MaterialIcons name={iconName} size={iconSize} color={theme.text} style={{ textAlign: 'center' }
+  const icon = iconName ? <MaterialIcons name={iconName} size={iconSize} color={theme.primaryText} style={{ textAlign: 'center' }
   } /> : null
 
   return (
 
     <TouchableOpacity
-      style={[styles.container, { right: rightDistance }]}
+      style={[styles.container, { bottom: bottomDistance }]}
       onPress={onPress}
     >
       <View>{icon}</View>

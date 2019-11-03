@@ -46,8 +46,9 @@ router.get('/get', async (req, res) => {
 
     let result = await pagesDB.get(pageID);
 
-    if (!result.finalText) {
+    console.log(result);
 
+    if (!result.finalText) {
       const image = await imagesDB.get(pageID);
       const finalText = image.text;
       result = await pagesDB.update(pageID, finalText);

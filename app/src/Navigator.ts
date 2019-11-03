@@ -3,16 +3,16 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ReadScreen from './screens/Read';
 import SettingsScreen from './screens/Settings';
-import Theme from './config/Theme';
-
-const theme = new Theme();
 
 const AppNavigator = createStackNavigator(
   {
     Read: {
       screen: ReadScreen,
-      navigationOptions: {
-        title: 'Read',
+      navigationOptions: ({ navigation }) => {
+        console.log(navigation)
+        return ({
+          title: 'Read',
+        })
       },
     },
     Settings: {

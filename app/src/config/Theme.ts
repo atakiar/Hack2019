@@ -15,13 +15,15 @@ const standard: Group = {
   title: 'Standard',
   rules: [
     { name: 'text', title: 'Text Color', value: '#000000' },
-    { name: 'primary', value: '#673ab7' },
-    { name: 'primaryAccent', value: '#9a67ea' },
+    { name: 'primary', value: 'rgb(54, 23, 107)' },
+    { name: 'primaryText', value: 'rgb(255, 255, 255)' },
+    { name: 'accent', value: 'rgb(236, 70, 53)' },
     { name: 'backgroundColor', title: 'Text Color', value: '#ffffff' },
     { name: 'accent', value: '#cccccc' },
     { name: 'fontSize', title: 'Font Size', value: 18 },
     { name: 'lineHeight', title: 'Line Height', value: 35 },
-    { name: 'fontFamily', title: 'Font', value: 'System' }
+    { name: 'fontFamily', title: 'Font', value: 'System' },
+    { name: 'danger', value: 'rgb(236, 70, 53)' }
   ]
 };
 
@@ -30,8 +32,8 @@ const dark: Group = {
   name: 'dark',
   rules: [
     { name: 'text', title: 'Text Color', value: '#ffffff' },
-    { name: 'primary', value: '#0000ff' },
-    { name: 'primaryAccent', value: '#8888ff' },
+    { name: 'primary', value: 'rgb(236, 70, 53)' },
+    { name: 'primaryText', value: 'rgb(255, 255, 255)' },
     { name: 'backgroundColor', title: 'Background Color', value: 'rgb(30, 42, 53)' },
   ]
 }
@@ -51,7 +53,8 @@ const blueLight: Group = {
   title: 'Blue Light',
   rules: [
     { name: 'backgroundColor', value: 'rgb(255, 238, 204)', title: 'Background Color' },
-    { name: 'text', value: 'rgb(64, 31, 8)', title: 'Text Color' }
+    { name: 'text', value: 'rgb(64, 31, 8)', title: 'Text Color' },
+    { name: 'primary', value: 'rgb(192, 57, 43)' }
   ]
 };
 

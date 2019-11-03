@@ -7,6 +7,7 @@
 import sys
 from collections import Counter
 
+
 def loadCorpus(option):
     if option == 1:
         result = {}
@@ -16,15 +17,19 @@ def loadCorpus(option):
                 result[word] = int(num)
         return Counter(result)
     else:
-        result = Counter(open('./services/textProcessing/spellCorrection/custom/corpus.txt').read().splitlines())
+        result = Counter(open(
+            './services/textProcessing/spellCorrection/custom/corpus.txt').read().splitlines())
         return result
+
 
 CORPUS = loadCorpus(1)
 CORPUS_COUNT = sum(CORPUS.values())
 LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
+
 def edit1(word):
-    if not word: return set()
+    if not word:
+        return set()
 
     splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
 
@@ -35,11 +40,14 @@ def edit1(word):
 
     return set(deletes + transposes + replaces + inserts)
 
+
 def edit2(word):
     return (result for item in edit1(word) for result in edit1(item))
 
+
 def known(words):
     return set(word for word in words if word in CORPUS)
+
 
 def candidates(word):
     knownResult = known([word])
@@ -48,15 +56,19 @@ def candidates(word):
 
     return (knownResult or edit1Result or edit2Result or [word])
 
+
 def probability(word):
     return CORPUS[word] / CORPUS_COUNT
 
+
 def spellCorrection(word):
     return max(candidates(word), key=probability)
+
 
 def main(word):
     print(spellCorrection(word))
     sys.stdout.flush()
 
+
 if __name__ == "__main__":
-   main(sys.argv[1])
+    main(sys.argv[1])
