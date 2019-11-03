@@ -17,6 +17,7 @@ export default class Main extends Component<{}, { fontLoaded: boolean }> {
 
   async componentDidMount() {
     theme.update = () => this.forceUpdate();
+    this.forceUpdate();
     await Font.loadAsync({
       'open-dyslexic-bold': require('../assets/fonts/OpenDyslexic3-Bold.ttf'),
       'open-dyslexic': require('../assets/fonts/OpenDyslexic3-Regular.ttf'),

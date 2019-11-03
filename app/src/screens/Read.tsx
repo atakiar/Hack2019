@@ -139,9 +139,8 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
               width: 100,
               height: 250,
               aspectRatio: 1,
-              position: 'relative',
-              top: theme.lineHeight,
-              left: theme.lineHeight
+              alignSelf: 'center',
+              marginTop: theme.lineHeight * 2
             }}
             resizeMode="contain"
             source={require('../../assets/images/computer.png')}
