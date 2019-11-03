@@ -26,10 +26,6 @@
     position: relative;
 }
 
-.button span {
-    padding: 12px 24px;
-}
-
 .button:before {
     content: "";
     position: absolute;
@@ -47,6 +43,51 @@
 }
 
 .button:active:before {
+    width: 120%;
+    padding-top: 120%;
+    transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.bark {
+    position: relative;
+    height: 10%;
+    width: 10%;
+    font-weight: 900;
+    display: inline-block;
+    margin: 1vh 1vw;
+    padding: 0;
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    transition: background-color .3s;
+}
+
+.bark>* {
+    position: relative;
+}
+
+.bark span {
+    padding: 12px 12px;
+}
+
+.bark:before {
+    content: "";
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+    width: 0;
+    padding-top: 0;
+    border-radius: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.bark:active:before {
     width: 120%;
     padding-top: 120%;
     transition: width .2s ease-out, padding-top .2s ease-out;

@@ -4,7 +4,7 @@ html
     title #{title}
     link(id='pagestyle', rel='stylesheet', href='/static/style.css')
     link(rel='stylesheet', href='/static/buttons.css')
-    //script(src='https://platform-beta.oswaldlabs.com/v1/agastya/load/blind-boi-810d9.js' async='' defer='') 
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     meta(name="viewport" content="width=device-width, initial-scale=1")
     script(src='/javascripts/accessibility.js')
       
@@ -15,18 +15,23 @@ html
       
       form(action='/get-text', method="get")
         .group
-          input(type='text')
+          input(type='text', required='')
           span.highlight
           span.bar
           label Text ID
-      div.content
-        | #{gotText}
-    
+
     div.bar
       button#normal.button Normal
       button#darkmode.button Dark Mode
       button#bluelight.button Blue Light
       button#largetext.button Large Text
       button#dyslexic.button Dyslexic
+
+    div.content
+        div
+          text#text
+            | #{gotText}
+        button#bark.bark
+          i.material-icons hearing
 
     block content

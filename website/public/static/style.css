@@ -45,54 +45,66 @@ button {
 }
 
 .button:focus,
-.button:hover {
+.button:hover,
+.bark:focus,
+.bark:hover {
     background-color: #00CFFF;
 }
 
 
 /*Dyslexic*/
 
-.dyslexic .button {
+.dyslexic .button,
+.dyslexic .bark {
     background-color: darkslategray;
     color: yellow;
     font-family: OpenDyslexic;
 }
 
 .dyslexic .button:focus,
-.dyslexic .button:hover {
+.dyslexic .button:hover,
+.dyslexic .bark:focus,
+.dyslexic .bark:hover {
     background-color: darkgray;
 }
 
 
 /*LargeText*/
 
-.largetext .button {
+.largetext .button,
+.largetext .bark {
     font-size: 140%;
 }
 
 
 /*Darkmode*/
 
-#body.darkmode .button {
+#body.darkmode .button,
+#body.darkmode .bark {
     background-color: gray;
     color: whitesmoke;
 }
 
 #body.darkmode .button:hover,
-#body.darkmode .button:focus {
+#body.darkmode .button:focus,
+#body.darkmode .bark:hover,
+#body.darkmode .bark:focus {
     background-color: darkslategray;
 }
 
 
 /*Bluelight*/
 
-body.bluelight .button {
+body.bluelight .button,
+body.bluelight .bark {
     background-color: #BF6416;
     color: #FFE594;
 }
 
 body.bluelight .button:hover,
-body.bluelight .button:focus {
+body.bluelight .button:focus,
+body.bluelight .bark:hover,
+body.bluelight .bark:focus {
     background-color: #EEA337;
 }
 
@@ -123,9 +135,9 @@ body.largetext h1 {
 
 input {
     font-size: 18px;
-    padding: 10px 10px 10px 5px;
+    padding: 10px 10px 10px 10px;
     display: block;
-    width: 50vw;
+    width: 100%;
     border: none;
     color: #1C304A;
     background: #B3EFFF;
@@ -136,9 +148,9 @@ input {
 /*LargeText*/
 
 .largetext input {
-    font-size: 7vh;
-    height: 7vh;
-    width: 65vw;
+    font-size: 10vh;
+    height: 10vh;
+    width: 100%;
 }
 
 
@@ -197,16 +209,31 @@ input:focus~label {
     color: #1C304A;
 }
 
+input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: #1C304A;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
 
 /*Largetext*/
 
 .largetext label {
-    font-size: 4vh;
+    font-size: 5vh;
     left: 1vw;
     top: 1vh;
 }
 
 .largetext input:focus~label {
+    top: -4.5vh;
+    font-size: 4vh;
+}
+
+.largetext input:valid~label {
     top: -4.5vh;
     font-size: 4vh;
 }
@@ -302,5 +329,5 @@ body.bluelight {
 }
 
 .content {
-    text-align: center;
+    text-align: right;
 }
