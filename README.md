@@ -14,7 +14,7 @@ HackOHI/O 2019
 ### Website
 - [ ] Styling on text to speech button
 - [ ] Styling for text
-- [ ] Text to speech
+- [x] Text to speech
 
 ### App
 - [ ] Fonts -> Doesn't do **bold** OpenDyslexic
