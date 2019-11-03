@@ -39,11 +39,7 @@ const get = async pageID => {
   let response = { success: false };
 
   try {
-    console.log(pageID);
-
     const image = await imagesCollection.findOne({ pageID });
-
-    console.log(image);
 
     response.success = true;
     response.text = image.text;
@@ -53,6 +49,5 @@ const get = async pageID => {
     throw new Error(response);
   }
 };
-
 
 module.exports = { add, get };

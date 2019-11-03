@@ -45,19 +45,15 @@ router.get('/get', async(req, res) => {
         const pageID = req.query.pageID;
 
         const result = await imagesDB.get(pageID);
-
-        console.log(result.text);
-
+        console.log(result);
         if (result.text) {
-            console.log('here');
             res.render('index', {
                 x: result.text,
-                err: false
+                err: false,
             });
         } else {
-            console.log('here2');
             res.render('index', {
-                err: true
+                err: true,
             });
         }
     } catch (error) {

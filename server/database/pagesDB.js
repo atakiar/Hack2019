@@ -65,5 +65,4 @@ const get = async pageID => {
   }
 };
 
-
 module.exports = { add, get };
