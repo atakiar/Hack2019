@@ -49,11 +49,13 @@ router.get('/get', async(req, res) => {
         console.log(result.text);
 
         if (result.text) {
+            console.log('here');
             res.render('index', {
                 x: result.text,
                 err: false
             });
         } else {
+            console.log('here2');
             res.render('index', {
                 err: true
             });
