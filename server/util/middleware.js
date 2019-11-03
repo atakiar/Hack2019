@@ -24,8 +24,8 @@ router.use(
 router.use(helmet.noCache());
 
 // BodyParser
-router.use(bodyParser.urlencoded({ extended: false, parameterLimit: 4 }));
-router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false, parameterLimit: 4, limit: '5mb' }));
+router.use(bodyParser.json({ limit: '5mb' }));
 
 // HTTP Parameter Pollution
 router.use(hpp());

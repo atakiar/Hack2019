@@ -34,6 +34,7 @@ const add = async () => {
 
     response.token = token;
     response.success = true;
+
     return response;
   } catch (error) {
     response.message = messages.error;
