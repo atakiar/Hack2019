@@ -13,7 +13,7 @@ HackOHI/O 2019
 
 ### Website
 - [X] Styling on text to speech button
-- [ ] Styling for text
+- [X] Styling for text
 - [x] Text to speech
 
 ### App
