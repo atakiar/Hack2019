@@ -18,9 +18,28 @@
 }
 
 
+/*anmols highlighting bullshit*/
+
+.dyslexic button#dyslexic.button {
+    border-bottom: 2px solid white;
+}
+
+.darkmode button#darkmode.button {
+    border-bottom: 2px solid white;
+}
+
+.bluelight button#bluelight.button {
+    border-bottom: 2px solid white;
+}
+
+.largetext button#largetext.button {
+    border-bottom: 2px solid white;
+}
+
+
 /*Normal*/
 
-.button {
+button {
     background-color: #046B99;
     color: #B3EFFF;
 }
