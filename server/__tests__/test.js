@@ -7,6 +7,7 @@ const run = () => {
   tests.forEach(async filePath => {
     const encodedImage = imageProcessing.toBase64(filePath);
     let { text } = await imageProcessing.processImage(encodedImage);
+    console.log(text);
     await textProcessing.spellCorrection(text);
     console.log(text);
   });

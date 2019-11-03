@@ -14,7 +14,7 @@ const imagesDB = require('../database/imagesDB');
  * @return {Object} result.token
  * @return {string} result.message
  */
-router.post('/new', async (req, res) => {
+router.get('/new', async (req, res) => {
   try {
     const result = await pagesDB.add();
 
