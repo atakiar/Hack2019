@@ -4,6 +4,7 @@ import Theme from './config/Theme';
 import * as Font from 'expo-font';
 
 const theme = new Theme();
+export { theme }
 
 export default class Main extends Component<{}, { fontLoaded: boolean }> {
   constructor(props) {

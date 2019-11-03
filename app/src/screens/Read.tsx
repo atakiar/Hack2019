@@ -9,9 +9,11 @@ import { sendImage } from '../services/api/api'
 import * as Speech from 'expo-speech';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
+import ActionButton from '../components/ActionButton';
+import Header from '../components/Header';
 
 
-export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean, hasPlayed: boolean }> {
+export default class Main extends Component<{ navigation, screenProps }, { text: string, uri: string, imageLoaded: boolean, modalVisible: boolean, base64: string, isPlaying: boolean, hasPlayed: boolean, bestVoice: string }> {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,18 +24,41 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
       modalVisible: false,
       isPlaying: false,
       hasPlayed: false,
+      bestVoice: ''
     };
+
   }
 
-  toggleSpeaking = () => {
+  async componentDidMount() {
+    const voices = await Speech.getAvailableVoicesAsync()
 
+    let voice = voices.find(v => v.language === 'en-US');
+
+    if (!voice) {
+      Alert.alert("There are no English voices.");
+      return;
+    }
+
+    const enhancedVoice = voices.find(v => v.quality === Speech.VoiceQuality.Enhanced);
+
+    if (enhancedVoice) {
+      voice = enhancedVoice;
+    }
+
+    const voiceId = voice.identifier;
+
+    console.log(voiceId);
+
+    this.setState({ bestVoice: voiceId })
+  }
+  toggleSpeaking = () => {
     if (this.state.isPlaying) {
       Speech.pause();
     } else {
       if (this.state.hasPlayed) {
         Speech.resume();
       } else {
-        Speech.speak(this.state.text);
+        Speech.speak(this.state.text, { voice: this.state.bestVoice, onDone: () => this.setState({ hasPlayed: false, isPlaying: false }) });
       }
     }
 
@@ -49,7 +74,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
     const { text } = result;
 
     // store the text
-    this.setState({ text, modalVisible: false })
+    this.setState({ text, modalVisible: false, hasPlayed: false })
   }
 
   pickImage = async () => {
@@ -76,7 +101,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
     }
 
 
-    const image = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, allowsEditing: true, base64: true });
+    const image = await ImagePicker.launchCameraAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, allowsEditing: true, base64: true });
 
     if (!image.cancelled) {
       this.setState({ uri: image.uri, base64: image.base64, imageLoaded: true, modalVisible: true, });
@@ -107,20 +132,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <Button
-            raised
-            title="Camera"
-            containerStyle={{ margin: 12 }}
-            buttonStyle={{ backgroundColor: theme.primary }}
-            onPress={this.pickImage}
-          />
-          <Button
-            raised
-            title="Options"
-            buttonStyle={{ backgroundColor: theme.primary }}
-            containerStyle={{ margin: 12 }}
-            onPress={() => navigation.navigate('Settings')}
-          />
+          <Header title="Read" theme={theme} />
           <Text style={[styles.text, { margin: 15 }]}>{text}</Text>
           <Image
             style={{
@@ -169,6 +181,7 @@ export default class Main extends Component<{ navigation, screenProps }, { text:
             />
           </View>
         </Modal>
+        <ActionButton theme={theme} onPress={this.pickImage} text="Camera" index={1} iconName="camera-alt" />
         <ListenButton theme={theme} onPress={this.toggleSpeaking} isPlaying={this.state.isPlaying} />
       </SafeAreaView >
     );

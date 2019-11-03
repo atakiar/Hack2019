@@ -1,4 +1,4 @@
-const serverURL = 'http://localhost:3000'
+const serverURL = 'http://192.168.1.252:3000'
 const times = {
   short: 3000,
   medium: 5000,

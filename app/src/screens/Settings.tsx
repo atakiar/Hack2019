@@ -7,6 +7,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import Theme, { groups, Group, Rule } from '../config/Theme';
 import RuleItem from './../components/Items/RuleItem'
 import GroupItem from './../components/Items/GroupItem'
+import Header from '../components/Header';
 
 
 const makeButtonData = (theme: Theme): { title: { group: Group, active: boolean }, data: { rule: Rule, active: boolean }[] }[] => {
@@ -54,6 +55,7 @@ class Settings extends React.Component<{ screenProps: { theme: Theme } }, { acti
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
+          <Header title="Settings" theme={theme} />
           <SectionList
             sections={data}
             keyExtractor={(item, index) => item + index}

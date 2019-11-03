@@ -14,20 +14,20 @@ const pagesDB = require('../database/pagesDB');
  * @return {string} result.message
  */
 
-router.post('/new', async (req, res) => {
-  try {
-    const result = await pagesDB.add();
+router.post('/new', async(req, res) => {
+    try {
+        const result = await pagesDB.add();
 
-    res
-      .status(200)
-      .send(JSON.stringify(result))
-      .end();
-  } catch (error) {
-    res
-      .status(500)
-      .send(JSON.stringify(error))
-      .end();
-  }
+        res
+            .status(200)
+            .send(JSON.stringify(result))
+            .end();
+    } catch (error) {
+        res
+            .status(500)
+            .send(JSON.stringify(error))
+            .end();
+    }
 });
 
 /** GET to [BaseAddress]/page/get
@@ -38,22 +38,22 @@ router.post('/new', async (req, res) => {
  * @return {string} result.text
  * @return {string} result.message
  */
-router.get('/get', async (req, res) => {
-  try {
-    const pageID = req.pageID;
+router.get('/get', async(req, res) => {
+    try {
+        const pageID = req.pageID;
 
-    const result = await pagesDB.get(pageID);
+        const result = await pagesDB.get(pageID);
 
-    res
-      .status(200)
-      .send(JSON.stringify(result))
-      .end();
-  } catch (error) {
-    res
-      .status(500)
-      .send(JSON.stringify(error))
-      .end();
-  }
+        res.render('index', {
+            x: result.text
+        });
+
+    } catch (error) {
+        res
+            .status(500)
+            .send(JSON.stringify(error))
+            .end();
+    }
 });
 
 module.exports = router;

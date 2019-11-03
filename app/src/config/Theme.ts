@@ -84,6 +84,8 @@ class Theme {
 
   lineHeight: number;
 
+  primary: string;
+
   constructor() {
     standard.rules.forEach((rule) => {
       this[rule.name] = rule.value;
