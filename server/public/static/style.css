@@ -311,16 +311,16 @@ body.bluelight {
 #data {
     font-weight: 400;
     font-size: 22px;
-    line-height: 22px;
+    line-height: 40px;
     text-align: center;
-    max-width: 60%;
+    max-width: 50%;
     margin: 0 auto;
 }
 
 .largetext #data {
     font-weight: 900;
     font-size: 6vh;
-    line-height: 6vh;
+    line-height: 8vh;
     text-align: center;
 }
 
