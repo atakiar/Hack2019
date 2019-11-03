@@ -24,34 +24,34 @@ router.use(hpp());
 
 // Authorization
 router.use((req, res, next) => {
-    const unauthorized = () => {
-        res
-            .status(401)
-            .send(JSON.stringify(messages.unauthorized))
-            .end();
-    };
+  const unauthorized = () => {
+    res
+      .status(401)
+      .send(JSON.stringify(messages.unauthorized))
+      .end();
+  };
 
-    if (req.url === '/website' || req.url === '/page/get' || req.url === '/page/new') {
+  if (req.url === '/website' || /\/page\/get\?.*/.test(req.url) || req.url === '/page/new') {
+    next();
+  } else if (req.headers.authorization) {
+    jwt
+      .verifyToken(req.headers.authorization)
+      .then(({ pageID }) => {
+        req.pageID = pageID;
         next();
-    } else if (req.headers.authorization) {
-        jwt
-            .verifyToken(req.headers.authorization)
-            .then(({ pageID }) => {
-                req.pageID = pageID;
-                next();
-            })
-            .catch(() => {
-                unauthorized();
-            });
-    } else {
+      })
+      .catch(() => {
         unauthorized();
-    }
+      });
+  } else {
+    unauthorized();
+  }
 });
 
 // Log
 router.use((req, res, next) => {
-    console.log(req.url);
-    next();
+  console.log(req.url);
+  next();
 });
 
 module.exports = router;

@@ -35,5 +35,24 @@ const add = async (pageID, text) => {
   }
 };
 
+const get = async pageID => {
+  let response = { success: false };
 
-module.exports = { add };
+  try {
+    console.log(pageID);
+
+    const image = await imagesCollection.findOne({ pageID });
+
+    console.log(image);
+
+    response.success = true;
+    response.text = image.text;
+    return response;
+  } catch (error) {
+    response.message = messages.error;
+    throw new Error(response);
+  }
+};
+
+
+module.exports = { add, get };
