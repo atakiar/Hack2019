@@ -44,6 +44,7 @@ const RuleItem = (props: Props) => {
       <Switch
         onValueChange={() => toggleRule(rule.name, groupName)}
         value={active}
+        trackColor={{ true: theme.primary, false: 'gray' }}
       />
     </View>
   );

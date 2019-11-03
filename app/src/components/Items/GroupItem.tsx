@@ -43,6 +43,7 @@ const GroupItem = (props: Props) => {
       <Switch
         onValueChange={() => toggleGroup(group.name)}
         value={active}
+        trackColor={{ true: theme.primary, false: 'gray' }}
       />
     </View>
   );
