@@ -1,7 +1,9 @@
 // External
 const spawn = require('child_process').spawn;
 
+
 // Sentence selection
+
 const sentenceSelection = async paragraphs => {
   let result = '';
 
@@ -18,3 +20,4 @@ const sentenceSelection = async paragraphs => {
 };
 
 module.export = sentenceSelection;
+

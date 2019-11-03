@@ -3,8 +3,8 @@
 }
 
 @font-face {
-    font-family: "OpenDyslexic";
-    src: url("opendyslexic.woff");
+    font-family: 'OpenDyslexic';
+    src: url('opendyslexic.woff');
 }
 
 
@@ -40,15 +40,15 @@
 /*Normal*/
 
 button {
-    background-color: #046B99;
-    color: #B3EFFF;
+    background-color: #046b99;
+    color: #b3efff;
 }
 
 .button:focus,
 .button:hover,
 .bark:focus,
 .bark:hover {
-    background-color: #00CFFF;
+    background-color: #00cfff;
 }
 
 
@@ -97,15 +97,15 @@ button {
 
 body.bluelight .button,
 body.bluelight .bark {
-    background-color: #BF6416;
-    color: #FFE594;
+    background-color: #bf6416;
+    color: #ffe594;
 }
 
 body.bluelight .button:hover,
 body.bluelight .button:focus,
 body.bluelight .bark:hover,
 body.bluelight .bark:focus {
-    background-color: #EEA337;
+    background-color: #eea337;
 }
 
 h1 {
@@ -139,9 +139,9 @@ input {
     display: block;
     width: 100%;
     border: none;
-    color: #1C304A;
-    background: #B3EFFF;
-    border-bottom: 1px solid #1C304A;
+    color: #1c304a;
+    background: #b3efff;
+    border-bottom: 1px solid #1c304a;
 }
 
 
@@ -175,9 +175,9 @@ input {
 /*Bluelight*/
 
 body.bluelight input {
-    color: #5E1E00;
-    background: #FFE594;
-    border-bottom: 1px solid #5E1E00;
+    color: #5e1e00;
+    background: #ffe594;
+    border-bottom: 1px solid #5e1e00;
 }
 
 input:focus {
@@ -191,7 +191,7 @@ input:focus {
 /*Normal*/
 
 label {
-    color: #1C304A;
+    color: #1c304a;
     font-size: 18px;
     font-weight: normal;
     position: absolute;
@@ -204,13 +204,13 @@ label {
 input:focus~label {
     top: -20px;
     font-size: 14px;
-    color: #1C304A;
+    color: #1c304a;
 }
 
 input:valid~label {
     top: -20px;
     font-size: 14px;
-    color: #1C304A;
+    color: #1c304a;
 }
 
 input:invalid {
@@ -262,11 +262,11 @@ input:invalid {
 /*bluelight*/
 
 body.bluelight label {
-    color: #5E1E00;
+    color: #5e1e00;
 }
 
 body.bluelight input:focus~label {
-    color: #5E1E00;
+    color: #5e1e00;
 }
 
 
@@ -278,9 +278,9 @@ input:focus~.bar:after {
 }
 
 body {
-    background: #B3EFFF;
-    color: #1C304A;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    background: #b3efff;
+    color: #1c304a;
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
     font-weight: 300;
 }
 
@@ -291,7 +291,7 @@ body {
 .dyslexic {
     background: black;
     color: yellow;
-    font-family: OpenDyslexic, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: OpenDyslexic, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 }
 
 #body.darkmode {
@@ -300,6 +300,35 @@ body {
 }
 
 body.bluelight {
-    background: #FFE594;
-    color: #5E1E00;
+    background: #ffe594;
+    color: #5e1e00;
+}
+
+#data {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 22px;
+    text-align: center;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.largetext #data {
+    font-weight: 900;
+    font-size: 6vh;
+    line-height: 6vh;
+    text-align: center;
+}
+
+.wordwrap {
+    white-space: pre-wrap;
+    /* CSS3 */
+    white-space: -moz-pre-wrap;
+    /* Firefox */
+    white-space: -pre-wrap;
+    /* Opera <7 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* IE */
 }
