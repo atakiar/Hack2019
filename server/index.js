@@ -4,6 +4,7 @@ const http = require('http');
 const app = express();
 
 app.set('view engine', 'pug');
+app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 // Middleware
